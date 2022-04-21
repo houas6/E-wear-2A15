@@ -2,19 +2,20 @@
 @session_start();
 include_once '../config.php';
 include_once '../Model/reclamation.php';
-class reclamationController {
+class reclamationC {
     function ajouterreclamtionn($reclamation){
-        $db = config::getConnexion();
+        $sql="INSERT INTO recc (nomR, prenomR, mail, rec) 
+        VALUES (:nomR,:prenomR,:mail, :rec)";
+       $db = config::getConnexion();
         try{
-        $stmt = $db->prepare("INSERT INTO recc (idRec ,nomR, prenomR, mail, rec) 
-        VALUES (:idRec,:nomR,:prenomR,:mail, :rec)");
-       
-       $stmt->bindParam(':idRec' -> $reclamation->getidRec());
-       $stmt->bindParam(':nomR' -> $reclamation->getNom());
-       $stmt->bindParam(':prenomR' -> $reclamation->getPrenom());
-       $stmt->bindParam(':mail' -> $reclamation->getmail());
-       $stmt->bindParam(':rec' -> $reclamation->getrec());
-       $stmt->execute();
+        $query=$db->prepare($sql);
+       $query->execute([
+       //'idRec' => $reclamation->getidRec(),
+       'nomR' => $reclamation->getNom(),
+      'prenomR' => $reclamation->getPrenom(),
+      'mail' => $reclamation->getmail(),
+       'rec' => $reclamation->getrec()
+       ]);
             			
         }
         catch (Exception $e){
@@ -32,20 +33,28 @@ class reclamationController {
             die('Erreur:'. $e->getMeesage());
         }
     }
-    function UpdateReclamation($reclamation){
-        $db = config::getConnexion();
-
-        try{
-                  // prepare sql and bind parameters
-            $sql = "UPDATE `recc` SET `nomR` = '".$reclamation->getNom()."',`prenomR` = '".$reclamation->getPrenom()."', `mail` = '".$reclamation->getmail()."', `rec` = '".$reclamation->getrec()."' ' WHERE `recc`.`idR` = '".$reclamation->getidR()."'";
-            $stmt = $db->prepare($sql);	
-            
-            $stmt->execute();
-            
+    function UpdateReclamation($reclamation,$idRec){
+        try {
+            $db = config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE recc SET 
+                    nomR = :nomR, 
+                    prenomR = :prenomR,
+                    mail = :mail,
+                    rec = :rec
+                WHERE idRec = :idRec'
+            );
+            $query->execute([
+                'nomR' => $reclamation->getNom(),
+                'prenomR' => $reclamation->getPrenom(),
+                'mail' => $reclamation->getmail(),
+                'rec' => $reclamation->getidRec(),
+                'idRec' => $idRec
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
         }
-        catch (Exception $e){
-            echo 'Erreur: '.$e->getMessage();
-        }			
     }
     function deleteRec($idRec){
         $sql="DELETE FROM recc WHERE idRec=:idRec";
@@ -59,7 +68,20 @@ class reclamationController {
             die('Erreur:'. $e->getMessage());
         }
     }
-
+    function recupererrec($idRec){
+        $sql="SELECT * from recc where idRec= :idRec";
+        $db = config::getConnexion();
+        try{
+            $query=$db->prepare($sql);
+            $query->bindValue(':idRec',$idRec);
+            $query->execute();
+            $reclamation=$query->fetch();
+            return $reclamation;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
 
 
 }

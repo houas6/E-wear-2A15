@@ -1,15 +1,15 @@
 <?php
 
-class Reclamation{
+class reclamation{
     private $idRec = null;
-    private $nom = null;
-    private $prenom = null;
+    private $nomR = null;
+    private $prenomR = null;
     private $mail = null;
     private $rec = null;
   
     
-    function __construct($idRec,$nomR, $prenomR, $mail, $rec){
-        $this->idRec=$idRec;
+    function __construct($nomR, $prenomR, $mail, $rec){
+       // $this->idRec=$idRec;
         $this->nomR=$nomR;
         $this->prenomR=$prenomR;
         $this->mail=$mail;
@@ -33,20 +33,20 @@ class Reclamation{
         return $this->rec;
     }
    
-    function setidRec(int $idRec){
+    function setidRec($idRec){
         $this->idRec=$idRec;
     }
-    function setNom(string $nomR){
+    function setNom($nomR){
         $this->nomR=$nomR;
     }
-    function setPrenom(string $prenomR){
+    function setPrenom($prenomR){
         $this->prenomR=$prenomR;
     }
-    function setmail(string $mail){
+    function setmail($mail){
         $this->mail=$mail;
     }
   
-    function setrec(string $rec){
+    function setrec($rec){
         $this->rec=$rec;
     }
    

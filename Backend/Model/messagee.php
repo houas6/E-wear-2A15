@@ -1,54 +1,48 @@
 <?php
 
-class messagee{
-    private ?int $idM = null;
-    private ?string $nom = null;
-    private ?string $email = null;
-    private ?string $sujet = null;
-    private ?string $mess = null;
+class message{
+    
+    private  $nomRe = null;
+    private  $maile = null;
+    private  $sujetRe = null;
+    private  $messageRe = null;
   
     
-    function __construct(int $idM,string $nom, string $email,string $sujet, string $mess){
+    function __construct( $nomRe, $maile, $sujetRe, $messageRe){
         
-        $this->idM=$idM;
-        $this->nom=$nom;
-        $this->email=$email;
-        $this->sujet=$sujet;
-        $this->mess=$mess;
+        $this->nomRe=$nomRe;
+        $this->maile=$maile;
+        $this->sujetRe=$sujetRe;
+        $this->messageRe=$messageRe;
      
     }
     
-    function getidM(): int{
-        return $this->idM;
+    
+    function getNom(){
+        return $this->nomRe;
     }
-    function getNom(): string{
-        return $this->nom;
+    function getEmail(){
+        return $this->maile;
     }
-    function getEmail(): string{
-        return $this->email;
+    function getsujet(){
+        return $this->sujetRe;
     }
-    function getsujet(): string{
-        return $this->sujet;
-    }
-    function getmess(): string{
-        return $this->mess;
+    function getmess(){
+        return $this->messageRe;
     }
    
-   
-function setidM(int $idM): void{
-        $this->idM=$idM;
+
+    function setNom(string $nomRe){
+        $this->nomRe=$nomRe;
     }
-    function setNom(string $nom): void{
-        $this->nom=$nom;
+    function setEmail(string $maile){
+        $this->maile=$maile;
     }
-    function setEmail(string $email): void{
-        $this->email=$email;
+    function setsujet(string $sujetRe){
+        $this->sujetRe=$sujetRe;
     }
-    function setsujet(string $sujet): void{
-        $this->sujet;
-    }
-    function setmess(string $mess): void{
-        $this->mess=$mess;
+    function setmess(string $mess){
+        $this->messageRe=$messageRe;
     }
    
   

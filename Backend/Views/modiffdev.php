@@ -1,6 +1,7 @@
 <?php
-    $id = (int)$_GET["id"];
+    
     $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
+    $id = (int)$_GET["id"];
     //creation un variable chaine de caractere contenant la requete sql 
     $req ="select * from user where id = $id";
   //execution de la requete avec la methode query la reponse sera mise dans $rep
@@ -62,44 +63,21 @@
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i> Espace Admin </a>
-                    </li>
-                    <h3 class="menu-title"> Éléments IU</h3><!-- /.menu-title -->
+                    </li> 
+                    <h3 class="menu-title"> Espace cleint</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
-                            <li><i class="fa fa-table"></i><a href="table-client.html">Client</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-user.php">User</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-panier.php">Panier</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-client.php">Client</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-admin.php">admin</a></li>
+                         
                         </ul>
                     </li>
 
-
-                    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Graphiques</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="Gra_produit.html"> GraphiqueProduit</a></li>
-
-                        </ul>
-                    </li>
-
-                    <h3 class="menu-title">Suppléments</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">S'identifier</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">S'inscrire</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Mot De Passe Oublier</a></li>
-                        </ul>
-                    </li>
+   
                 </ul>
+        
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->

@@ -1,22 +1,22 @@
 <?php
     include_once '../Model/Reclamation.php';
     include_once '../controller/reclamationC.php';
-    $error = "";
+    $error1 = "";
     $reclamation = null;
 
     // create an instance of the controller
    
-    $reclamationController = new reclamationController();
+    $reclamationC = new reclamationC();
     if (
-      isset($_POST["idRec"]) &&	
-		isset($_POST["nom"]) &&		
-    isset($_POST["prenom"]) &&	
+      //isset($_POST["idRec"]) &&	
+		isset($_POST["nomR"]) &&		
+    isset($_POST["prenomR"]) &&	
         isset($_POST["mail"]) &&
 		isset($_POST["rec"]) 
         
     ) {
         if (
-          !empty($_POST['idRec']) &&
+          //!empty($_POST['idRec']) &&
 			!empty($_POST['nomR']) &&
             !empty($_POST["prenomR"]) && 
 			!empty($_POST["mail"]) && 
@@ -24,28 +24,28 @@
             
         ) {
             $reclamation = new reclamation(
-              $_POST["idRec"],
-              $_POST["nomR"],
-              $_POST["prenomR"],
-              $_POST["mail"],
-              $_POST["rec"],
+             // $_POST["idRec"],
+              $_POST['nomR'],
+              $_POST['prenomR'],
+              $_POST['mail'],
+              $_POST['rec']
               
             );
-            $reclamationController->ajouterreclamtionn($reclamation);
+            $reclamationC->ajouterreclamtionn($reclamation);
             
 
             
         }
         else
-            $error = "Missing information";
+            $error1 = "Missing information";
           //  var_dump($error);
-            echo $error;
+            echo $error1;
     }
 ?>
 <?php
     include_once '../Model/messagee.php';
     include_once '../controller/message.php';
-    $error = "";
+    $error11 = "";
     $message = null;
 
     // create an instance of the controller
@@ -68,11 +68,10 @@
             
         ) {
             $message = new message(
-              
-              $_POST["nomRe"],
-              $_POST["maile"],
-              $_POST["sujetRe"],
-              $_POST["messageRe"],
+              $_POST['nomRe'],
+              $_POST['maile'],
+              $_POST['sujetRe'],
+              $_POST['messageRe']
               
             );
             $messageController->ajoutermessage($message);
@@ -81,9 +80,9 @@
             
         }
         else
-            $error = "Missing information";
+            $error11 = "Missing information";
           //  var_dump($error);
-            echo $error;
+            echo $error11;
     }
 ?>
 <!DOCTYPE html>
@@ -110,8 +109,7 @@
 		"logo": "images/277407930_493856805544939_7371162813423727908_n.png",
 		"sameAs": []
 }</script>
-<script type="text/javascript" src="OFFRE.js"></script>
-<script type="text/javascript" src="Message.js"></script>
+
 
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Contact">
@@ -214,15 +212,17 @@ holidays
         <div class="u-align-left u-clearfix u-sheet u-sheet-1"></div>
       <div class="col-lg-4">
           <div class="contact-info">
-              <form name="c" onsubmit="return validateForm(event)" action=""
+             <!-- <form name="c" onsubmit="return validateForm(event)" action=""
 method="post">
               </h3>
               <br>
               <center> <font size="7" class="error">Complaint request</font> <br><br></center>
-              <div class="form-group">
-                <center>Id de reclamation:</center><center><input type="text" class="form-control" name="idRec" placeholder="id de reclamation" style="color: black;" > </center>
-                <center><p id="erroridR" class="error" style="color:#FFFF00"></p>
+              
+                <div class="form-group">
+                <center></center><center><input type="text" class="form-control" name="idRec" placeholder="id de reclamation" hidden style="color: black;" > </center>
+                <center><p id="erroridR" class="error" hidden style="color:#FFFF00"></p>
               </div>
+            
               <div class="form-group">
                 <center>Nom:</center><center><input type="text" class="form-control" name="nomR" id="nomR"placeholder="votre nom" style="color: black;"></center>
               <center><p id="errorNR" class="error" style="color:#FFFF00"></p></center>
@@ -239,17 +239,87 @@ method="post">
               <div class="form-group">
                 <center> réclamation:</center><center><textarea name="Rec" id="Rec" rows="5"placeholder="votre réclamation" style="color: black;"></textarea></center>
                 <center><p id="errorR" class="error" style="color:#FFFF00"></p></center></div>
-              <center><input  class="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-white u-radius-50 u-text-hover-white u-btn-1" type="submit" value="Send" ><input class="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-white u-radius-50 u-text-hover-white u-btn-1" type="reset" value="Reset"/></center>
+              <center><input  class="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-white u-radius-50 u-text-hover-white u-btn-1" type="submit" value="Send" >
+              <input class="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-white u-radius-50 u-text-hover-white u-btn-1" type="reset" value="Reset"/></center>
               </form>
+              !-->
+              <div id="error">
+            <?php echo $error1; ?>
+        </div>
+        Complaint request
+        <form id="c" action="contact.php" method="POST">
+          
+            <table border="0" align="center">
+               
+				<tr>
+                    <td>
+                        <label for="nomR">Nom:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="nomR" id="nomR" maxlength="20"  style="color: black;">
+                      <p style="color: red;" id="error_first"></p>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="prenomR">prenom:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="prenomR" id="prenomR" maxlength="20" style="color: black;">
+                      <p style="color: red;" id="error_last"></p>
+                    </td>
+                </tr>
+                <td>
+                        <label for="mail">mail:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="mail" id="mail" maxlength="20" style="color: black;">
+                      <p style="color: red;" id="error_mail"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cmail">Confirmation d'Email:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="cmail" id="cmail" maxlength="20" style="color: black;">
+                      <p style="color: red;" id="error_cmail"></p>
+                    </td>
+                </tr>
+                <td>
+                        <label for="rec">reclamation:
+                        </label>
+                    </td>
+                    <td>
+                      <textarea type="text" name="rec" id="rec" rows="5" style="color: black;"></textarea>
+                      <p style="color: red;" id="error_rec"></p>
+                    </td>
+                </tr>            
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" href="contact.php" value="Envoyer"> 
+                    </td>
+                    <td>
+                        <input type="reset" value="Annuler" >
+                    </td>
+                </tr>
+            </table>
+        </form>
           </div>
       </div>
+      <script type="text/javascript" src="OFFRE.js"></script>
       </section>
       <hr>
       <section class="u-clearfix u-palette-5-dark-1 u-section-1" id="sec-6473">
         <div class="u-align-left u-clearfix u-sheet u-sheet-1"></div>
       <div class="col-lg-4">
           <div class="contact-info">
-              <form name="M" onsubmit="return validateForme(event)" action=""
+              <!--<form name="M" onsubmit="return validateForme(event)" action=""
               method="post">
                   <br>
                   <center> <font size="7" class="error">Contact us</font> <br><br></center>
@@ -271,9 +341,67 @@ method="post">
                     <center><p id="errorER" class="error" style="color:#FFFF00"></p></center>
                   </div>
                   <center><input class="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-white u-radius-50 u-text-hover-white u-btn-1" type="submit" value="Send Message"></center>
-              </form>
+              </form>!-->
+              <div id="error11">
+            <?php echo $error11; ?>
+        </div>
+        Contact us
+        <form id="c" action="contact.php" method="POST">
+            <table border="0" align="center">
+               
+				<tr>
+                    <td>
+                        <label for="nomRe">Nom:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="nomRe" id="nomRe" maxlength="20" style=" color: black;">
+                      <p style="color: red;" id="error_laste"></p>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="maile">Email:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="maile" id="maile" maxlength="20" style="color: black;">
+                      <p style="color: red;" id="error_maile"></p>
+                    </td>
+                </tr>
+                <td>
+                        <label for="sujetRe">sujet:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="sujetRe" id="sujetRe" maxlength="20" style="color: black;">
+                      <p style="color: red;" id="error_s"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="messageRe">message:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="messageRe" id="messageRe" maxlength="20" style="color: black;">
+                      <p style="color: red;" id="error_mess"></p>
+                    </td>
+                </tr>           
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" href="contact.php" value="Envoyer"> 
+                    </td>
+                    <td>
+                        <input type="reset" value="Annuler" >
+                    </td>
+                </tr>
+            </table>
+        </form>
           </div>
       </div>
+      <script type="text/javascript" src="OFFRE.js"></script>
       </section>
      
     

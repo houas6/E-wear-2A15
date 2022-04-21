@@ -1,11 +1,11 @@
 <?php
-    include_once '../Model/User.php';
+   include_once '../Model/User.php';
     include_once '../Controller/User.php';
     $error = "";
     $User = null;
 
     // create an instance of the controller
-    $User = new User();
+    $User = new UserController();
     if (
         isset($_POST["ID"]) &&
 		isset($_POST["name"]) &&		
@@ -28,11 +28,12 @@
                 $_POST['adresse']
             );
             $User->addUser($User);
-            header('Location:index.php');
+          //  header('Location:index.php');
         }
         else
             $error = "Missing information";
             echo $error;
     }
     var_dump($_POST);
+    
 ?>

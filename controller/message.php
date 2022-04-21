@@ -4,17 +4,18 @@ include_once '../config.php';
 include_once '../Model/messagee.php';
 class messageController {
     function ajoutermessage($message){
-        $db = config::getConnexion();
+        $sql="INSERT INTO messa (nomRe, maile, sujetRe, messageRe) 
+        VALUES (:nomRe,:maile,:sujetRe, :messageRe)";
+       $db = config::getConnexion();
         try{
-        $stmt = $db->prepare("INSERT INTO messa (nomRe, maile, sujetRe, messageRe) 
-        VALUES (:nomRe,:maile,:sujetRe, :messageRe)");
-       
-      
-       $stmt->bindParam(':nomRe' -> $message->getNom());
-       $stmt->bindParam(':maile' -> $message->getEmail());
-       $stmt->bindParam(':sujetRe' -> $message->getsujet());
-       $stmt->bindParam(':messageRe' -> $message->getmess());
-       $stmt->execute();
+        $query=$db->prepare($sql);
+       $query->execute([
+       //'idRec' => $reclamation->getidRec(),
+       'nomRe' => $message->getNom(),
+      'maile' => $message->getEmail(),
+      'sujetRe' => $message->getsujet(),
+       'messageRe' => $message->getmess()
+       ]);
             			
         }
         catch (Exception $e){

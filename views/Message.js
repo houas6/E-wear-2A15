@@ -1,4 +1,4 @@
-function verife() {
+/*function verife() {
 
     var nomRe = document.forms["M"]["nomRe"].value;
  
@@ -59,4 +59,77 @@ function verife() {
     function validateForme(e) {
         e.preventDefault();
         verife();
-    }
+    }*/
+    document.getElementById("b").addEventListener("submit", function(ee){
+ 
+        var error_laste;
+        var error_maile;
+        var error_s;
+        var error_mess;
+        
+        /*var inputs = this.getElementsByTagName("input");
+     
+        for (var i = 0; i < inputs.length; i++) {
+            console.log(inputs[i]);
+            if (!inputs[i].value) {
+                erreur = "Please complete all fields! ";
+            }
+        }*/
+    
+        var nomRe = document.getElementById("nomRe");
+        var maile = document.getElementById("maile");
+        var sujetRe = document.getElementById("sujetRe");
+        var  messageRe= document.getElementById("messageRe");
+        
+    
+         myregex = /^[A-Za-z]+$/;
+        
+        if (!nomRe.value) {
+            error_laste = "Last Name Required!!";
+        }
+        
+        else if (myregex.test(nomRe.value)==false){
+            error_laste = "Last Name must contain only letters!!";
+        }
+        else
+        {error_laste = "";}
+    
+        if (!maile.value) {
+            error_maile = "Email Required!!";
+        }
+        
+        
+        if (!sujetRe.value) {
+            error_s = "subject Required!!";
+        }
+        if (!messageRe.value) {
+            error_mess = "message Required!!";
+        }
+        
+        
+        if (error_laste) {
+            ee.preventDefault();
+            document.getElementById("error_laste").innerHTML = error_laste;
+            return false;
+        }
+    
+        if (error_maile) {
+            ee.preventDefault();
+            document.getElementById("error_maile").innerHTML = error_maile;
+            return false;
+        }
+    
+        if (error_s) {
+            ee.preventDefault();
+            document.getElementById("error_s").innerHTML = error_s;
+            return false;
+        }
+    
+    
+        if (error_mess) {
+            ee.preventDefault();
+            document.getElementById("error_mess").innerHTML = error_mess;
+            return false;
+        }
+    
+    });

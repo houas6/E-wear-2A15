@@ -1,6 +1,6 @@
 <?php
 
-class messagee{
+class message{
     
     private  $nomRe = null;
     private  $maile = null;

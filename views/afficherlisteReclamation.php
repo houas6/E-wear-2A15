@@ -1,6 +1,6 @@
 <?php
 	include '../Controller/reclamationC.php';
-	$reclamation=new reclamationController();
+	$reclamation=new reclamationC();
 	$listerec=$reclamation->afficherrec(); 
 ?>
 
@@ -31,6 +31,12 @@
 				<td>
 					
 				</td>
+				<td>
+				<form method="POST" action="updaterec.php">
+						<input type="submit" name="modifier" value="modifier">
+						<input type="hidden" value="<?PHP echo $reclamation['idRec']; ?>" name="idRec">
+						</form>
+					</td>
 				<td>
 					<a href="deleteRec.php?idRec=<?php echo $reclamation['idRec']; ?>">Supprimer</a>
 				</td>

@@ -46,46 +46,20 @@
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-               
-                <h3 class="menu-title"> ESPACE CLIENT</h3><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">    
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
-                <a href="../../views/afficherlisteReclamation.php" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Reclamation</a> 
-                <a href="../../views/afficherlisteMessage.php" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>message</a>     
-                <ul class="sub-menu children dropdown-menu">
-                        <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
-                        <li><i class="fa fa-table"></i><a href="table-client.html">Client</a></li>
-                        <!-- <li><i class="fa fa-table"></i><a href="table-user.php">User</a></li>
-                       <li><i class="fa fa-table"></i><a href="table-panier.php">Panier</a></li>
-                        <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
-                       
-                        <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
-                        <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>-->
-                    </ul>
-                </li>
-            
-
-               <!--  <h3 class="menu-title">Icons</h3><!-- /.menu-title 
-                <li>
-                    <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                </li>
+            <li class="active">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i> Espace Admin </a>
+                    </li> 
+                   
+                <h3 class="menu-title"> ESPACE Admin</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Graphiques</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-area-chart"></i><a href="Gra_produit.html"> GraphiqueProduit</a></li>
+                    
+                        <li><i class="fa fa-table"></i><a href="table-admin.php">admin</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-client.php">reclamation</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-message.php">message</a></li>
                     </ul>
-                </li>
-                
-                <h3 class="menu-title">Suppléments</h3><!-- /.menu-title 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">S'identifier</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">S'inscrire</a></li>
-                        <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Mot De Passe Oublier</a></li>
-                    </ul>
-                </li> -->
-            </ul>
+                </li></ul>
         </div><!-- /.navbar-collapse -->
     </nav>
 </aside><!-- /#left-panel -->
@@ -95,132 +69,7 @@
 <!-- Right Panel -->
 
 <div id="right-panel" class="right-panel">
-
-    <!-- Header-->
-    <!--<header id="header" class="header">
-
-        <div class="header-menu">
-
-            <div class="col-sm-7">
-                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                <div class="header-left">
-                    <button class="search-trigger"><i class="fa fa-search"></i></button>
-                    <div class="form-inline">
-                        <form class="search-form">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                        </form>
-                    </div>
-
-                    <div class="dropdown for-notification">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">5</span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">vous avez 3 Notifications</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
-                            <i class="fa fa-check"></i>
-                            <p>Serveur # 1 surchargé.</p>
-                        </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
-                            <i class="fa fa-info"></i>
-                            <p>Serveur #2  surchargé.</p>
-                        </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
-                            <i class="fa fa-warning"></i>
-                            <p>Serveur # 1 surchargé.</p>
-                        </a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown for-message">
-                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                            id="message"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="ti-email"></i>
-                            <span class="count bg-primary">9</span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="message">
-                            <p class="red">vous avez 4 Mails</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                            <span class="message media-body">
-                                <span class="name float-left">Jonathan Smith</span>
-                                <span class="time float-right"> Juste maintenant </span>
-                                    <p>salut,c'est un  example msg</p>
-                            </span>
-                        </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-                            <span class="message media-body">
-                                <span class="name float-left">Jack Sanders</span>
-                                <span class="time float-right"> Il y a 5 minutes</span>
-                                    <p>salut,c'est un  example msg</p>
-                            </span>
-                        </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-                            <span class="message media-body">
-                                <span class="name float-left">Cheryl Wheeler</span>
-                                <span class="time float-right"> Il y a 10 minutes </span>
-                                    <p>salut,c'est un  example msg</p>
-                            </span>
-                        </a>
-                            <a class="dropdown-item media bg-flat-color-3" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-                            <span class="message media-body">
-                                <span class="name float-left">Rachel Santos</span>
-                                <span class="time float-right">Il y a 15 minutes </span>
-                                    <p>salut,c'est un  example msg</p>
-                            </span>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-5">
-                <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
-                    </a>
-
-                    <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Mon Profile</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-cog"></i> paramétre</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Se déconnecter</a>
-                    </div>
-                </div>
-
-                <div class="language-select dropdown" id="language-select">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                        <i class="flag-icon flag-icon-us"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="language">
-                        <div class="dropdown-item">
-                            <span class="flag-icon flag-icon-fr"></span>
-                        </div>
-                        <div class="dropdown-item">
-                            <i class="flag-icon flag-icon-es"></i>
-                        </div>
-                        <div class="dropdown-item">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </div>
-                        <div class="dropdown-item">
-                            <i class="flag-icon flag-icon-it"></i>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </header> /header -->
+ </header>
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -234,7 +83,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">Espace Admin</a></li>
+                            <li><a href="#">Espace reclamation</a></li>
                             <li><a href="#">Table</a></li>
                             <li class="active"> table de donée  </li>
                         </ol>
@@ -249,27 +98,16 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">CLIENT</strong>
+                                <strong class="card-title">CLIENT</strong>    
                             </div>
-                            <div class="card-body">
-                            <!--    <select id="trier" style="margin-left: 85%; margin-bottom: 1%; border-radius: 5%;" >
-                                    <option value="trier_id">trier par Id_client</option>
-                                    <option value="trier_nom">trier par nom </option>
-                                    <option value="trier_nom">trier par prenom </option>
-                                   
-                                  </select>
-                                  
-                                  <div style="margin-left: 75%;">
-                                  <label>Search : </label><input type="search">
-                                </div> -->
-                                <table  class="table table-striped table-bordered">
+                            <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Id Client</th>
+                                            <th>Id reclamation</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Mail</th>
-                                            <th>Adresse</th>
+                                            <th>reclamation</th>
                                            <!-- <th> savoir plus </th>-->
 
                                         </tr>
@@ -279,12 +117,12 @@
                                             <?php
                                             $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
                                             //creation un variable chaine de caractere contenant la requete sql 
-                                            $req ="select * from user";
+                                            $req ="select * from recc";
                                           //execution de la requete avec la methode query la reponse sera mise dans $rep
                                             $rep= $con->query($req);
                                              if(isset($_POST["search"])) {
-                                                $name = $_POST["search-area"];
-                                                $rep = $con->query("select * from recc where nom like '%$nomR%'");   
+                                                $nomR = $_POST["search-area"];
+                                                $rep = $con->query("select * from recc where nomR like '%$nomR%'");   
 
                                             }
                                           while($ligne=$rep->fetch()){
@@ -292,69 +130,7 @@
                                                   <tr>
                                                   
                                           
-                                                      <td><?php echo $ligne["ID"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["name"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["email"];?></td>
-
-
-                                                      <td><?php echo $ligne["pass"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["adresse"];?></td>
-                                          
-                                          
-                                                     
-
-                                                      <td> <a href="suppdev.php?rep=<?php echo $ligne['ID'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="modiffdev.php?id=<?=$ligne["ID"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
-
-                                                                                    
-                                                     
-                                          
-                                                     
-                                                  </tr>
-                                          
-                                          
-                                          <?php
-                                          }
-                                          ?>
-                                           
-
-                                        </tr>
-                                       
-                                    </tbody>
-                                    <tbody>
-                                    <tr>
-                                            <th>Id Commande</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Mail</th>
-                                            <th>reclamation</th>
-                                           <!-- <th> savoir plus </th>-->
-
-                                        </tr>
-                                        <tr>
-                                            <?php
-                                            $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
-                                            //creation un variable chaine de caractere contenant la requete sql 
-                                            $req ="select * from user";
-                                          //execution de la requete avec la methode query la reponse sera mise dans $rep
-                                            $rep= $con->query($req);
-                                             if(isset($_POST["search"])) {
-                                                $name = $_POST["search-area"];
-                                                $rep = $con->query("select * from recc where nom like '%$idR%'");   
-
-                                            }
-                                          while($ligne=$rep->fetch()){
-                                          ?>
-                                                  <tr>
-                                                  
-                                          
-                                                      <td><?php echo $ligne["idR"];?></td>
+                                                      <td><?php echo $ligne["idRec"];?></td>
                                                   
                                                   
                                                       <td><?php echo $ligne["nomR"];?></td>
@@ -367,12 +143,9 @@
                                                   
                                                   
                                                       <td><?php echo $ligne["rec"];?></td>
-                                          
-                                          
-                                                     
 
-                                                      <td> <a href="suppdev.php?rep=<?php echo $ligne['ID'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="modiffdev.php?id=<?=$ligne["ID"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
+                                                      <td> <a href="deleterec.php?rep=<?php echo $ligne['idRec'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+                                                      <td> <a href="updaterec.php?id=<?=$ligne["idRec"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
 
                                                                                     
                                                      
@@ -407,23 +180,13 @@
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-
+                                                <!--
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">CARTE Fidélité</strong>
                             </div>
-                            <div class="card-body">
-                              <!--  <select id="trier" style="margin-left: 85%; margin-bottom: 1%; border-radius: 5%;" >
-                                    <option value="trier_id">trier par Id_client</option>
-                                    <option value="trier_nom">trier par nom </option>
-                                    <option value="trier_nom">trier par prenom </option>
-                                   
-                                  </select>
-                                  <div style="margin-left: 75%;">
-                                    <label>Search : </label><input type="search">
-                                  </div>-->
-                                <table  class="table table-striped table-bordered">
+                            <div class="card-body">                          <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id Client</th>
@@ -445,6 +208,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                                        -->
                         </div>
                     </div>
 
@@ -481,3 +245,4 @@
 </body>
 
 </html>
+

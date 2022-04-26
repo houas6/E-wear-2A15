@@ -1,43 +1,72 @@
-function test()
-{
-    var nom=document.forms["commande"]["nom"].value;
-    var telephone=document.forms["commande"]["telephone"].value;
-    var adresse=document.forms["commande"]["adresse"].value;
-    var prix=document.forms["commande"]["prix"].value;
+document.getElementById("bad").addEventListener("submit", function(e){
+ 
+    
+    var error_nom;
+    var error_telephone;
+    var error_adresse;
+    var error_prix;
+    
+    
+    var nom=document.getElementById('nom');
+    var telephone=document.getElementById('telephone');
+    var adresse=document.getElementById('adresse');
+    var prix=document.getElementById('prix');
+    
+    
+    var num = /^[A-Za-z1-9]+$/;
+     myregex = /^[A-Za-z]+$/;
+     var reWhiteSpace = new RegExp("/^\s+$/");
+     
+    
+    if (!nom.value) {
+        error_nom = "Name Required!!";
+    }
 
-    var errorNom=document.getElementById('nom');
-    var errorTelephone=document.getElementById('telephone');
-    var errorAdresse=document.getElementById('adresse');
-    var errorPrix=document.getElementById('prix');
-    var letters = /^[A-Za-z]+$/;
+    else if (myregex.test(nom.value)==false)
+    {
+        error_nom = "Name must contain only letters!!";
+}
     
 
-    if (nom == "") {
-        errorNom.innerHTML = "Veuillez entrer votre nom!";
+    if (!telephone.value) {
+        error_tel = "telephone number Required !!";
+    }
+   
+ 
+    if (!adresse.value) {
+        error_adresse = "adresse Required!!";
+    }
+    else if (myregex.test(adresse.value)==false && reWhiteSpace.test(s.value)==false && num.test(adresse.value)==false){
+        error_adresse = "message must contain only letters and numbers !!";
+    }
+    
+    if (error_nom) {
+        e.preventDefault();
+        document.getElementById("error_nom").innerHTML = error_nom;
+        return false;}
+        else
+        {
+            document.getElementById("error_nom").innerHTML = "";
+        }
 
+    if (error_telephone) {
+        e.preventDefault();
+        document.getElementById("error_telephone").innerHTML = error_telephone;
+        return false;
     }
-    else if (!(nom.match(letters) && nom.charAt(0).match(/^[A-Z]+$/))) {
-        errorNom.innerHTML = "Veuillez entrer un nom valid!";
-    } else {
-        errorNom.innerHTML = "";
+else
+{document.getElementById("error_telephone").innerHTML = "";}
+    if (error_prix) {
+        e.preventDefault();
+        document.getElementById("error_prix").innerHTML = error_prix;
+        return false;
+    }
+else{document.getElementById("error_prix").innerHTML = "";}
 
+    if (error_adresse) {
+        e.preventDefault();
+        document.getElementById("error_adresse").innerHTML = error_adresse;
+        return false;
     }
-
-    if (telephone.length!=8) //telephone
-    {
-        errorTelephone.innerHTML = "Le numero de telephone doit exister . "
-    }
-    if (adresse=="" )  
-    {
-        errorAdresse.innerHTML = "Veuillez entrer votre adresse!";
-    }
-    if (prix==0 )  
-    {
-        errorPrix.innerHTML = "Le prix doit exister. "
-    }
-}
-function validateform(e){
-    e.preventDefault();
-test();
-
-}
+    else{document.getElementById("error_adresse").innerHTML = "";}
+});

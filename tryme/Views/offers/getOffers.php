@@ -1,8 +1,8 @@
 
 <?php
-include_once '../../Model/Offer.php';
-include_once '../../Controller/Offer.php';
-
+    include_once '../../config.php';
+    include_once '../../Model/Offer.php';
+    include_once '../../Controller/Offer.php';
 
 
 
@@ -18,8 +18,18 @@ if (
             $controller->deleteOffers($id);
         }
     }
-    
+            $controller = new OfferController();
 
+if (
+    isset($_POST['by']) && isset($_POST['action']) && ($_POST['action'] == 'sort')
+    ) {
+            $by = $_POST['by'];
+
+            $result = $controller->getOffersSorted($by);
+        }
+else {
+  $result = $controller->getOffers();
+}
 
 
 
@@ -53,15 +63,52 @@ if (
   </head>
   <body>
 
+
   
 <table class="table-auto  w-full  text-center">
   <thead>
     <tr>
-      <th>id</th>
-      <th>description</th>
-      <th>pourcentage</th>
-      <th>date debut</th>
-      <th>date fin</th>
+      <th>
+        <form method="post">
+      <input type="hidden" value="sort" name="action" />
+      <input type="hidden" value="id" name="by" />
+      <button>id</button>
+    </form>
+    </th>
+
+      <th>
+        <form method="post">
+      <input type="hidden" value="sort" name="action" />
+      <input type="hidden" value="description" name="by" />
+      <button>description</button>
+    </form>
+    </th>
+
+      <th>
+        <form method="post">
+      <input type="hidden" value="sort" name="action" />
+      <input type="hidden" value="pourcentage" name="by" />
+      <button>pourcentage</button>
+    </form>
+    </th>
+
+      <th>
+        <form method="post">
+      <input type="hidden" value="sort" name="action" />
+      <input type="hidden" value="dateDebut" name="by" />
+      <button>date debut</button>
+    </form>
+    </th>
+
+      <th>
+        <form method="post">
+      <input type="hidden" value="sort" name="action" />
+      <input type="hidden" value="dateFin" name="by" />
+      <button>date fin</button>
+    </form>
+    </th>
+
+
       <th>update</th>
       <th>delete</th>
     </tr>
@@ -71,10 +118,6 @@ if (
   <?php
 
   
-$controller = new OfferController();
-
-$result = $controller->getOffers();
-
 while($ligne=$result->fetch()){
     echo "
     <tr>

@@ -1,4 +1,5 @@
 <?php
+    include_once '../../config.php';
     include_once '../../Model/Offer.php';
     include_once '../../Controller/Offer.php';
 
@@ -33,7 +34,6 @@ if (
         color: red;
       }
     </style>
-    <script type="text/javascript" src="OFFRE.js"></script>
     <script src="tw.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +41,6 @@ if (
       href="https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap"
       rel="stylesheet"
     />
-    <script src="main.js"></script>
 
     <style>
       .fancy {
@@ -55,7 +54,7 @@ if (
         <img src="E-wear.png" class="h-full object-contain" />
       </div>
 
-      <form method="post"  action="<?=$_SERVER['PHP_SELF']?>">
+      <form method="post"  action="<?=$_SERVER['PHP_SELF']?>" id="create">
         <h1 class="text-center text-[#cd5c5c] text-5xl fancy">Nos offres</h1>
 
         <div class="grid max-w-lg mx-auto gap-4 text-black py-4">
@@ -102,7 +101,7 @@ if (
 
           <div class="flex items-center justify-between mt-10">
             <button
-              onclick="verify()"
+              type="submit"
               class="text-white bg-red-500 hover:bg-red-400 duration-200 py-2 px-3 rounded"
             >
               Envoyer
@@ -129,5 +128,7 @@ if (
     <footer
       class="bg-black text-white text-lg font-serif text-center py-3"
     ></footer>
+    <script src="main.js"></script>
+    
   </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 
+include_once '../../config.php';
 include_once '../../Model/Offer.php';
 include_once '../../Controller/Offer.php';
 
@@ -27,9 +28,6 @@ if (
 ?>
 
 <?php
-include_once './model/offer.php';
-include_once './config.php';
-include_once './controller/offer.php';
 
 if (!isset($_POST['id'])) {
     die('nothin');

@@ -1,12 +1,9 @@
 <?php
-include '../../config.php';
-include_once '../Model/Offer.php';
 
 class OfferController {
 
     function addOffer($offer) {
         $sql = "INSERT INTO offre (description, pourcentage, dateDebut, dateFin) VALUES ('".$offer->getDescription()."', '".$offer->getPourcentage()."', '".$offer->getDateDebut()."', '".$offer->getDateFin()."');";
-
 
 
         $db = config::getConnexion();
@@ -50,6 +47,24 @@ class OfferController {
             echo 'Erreur: '.$e->getMessage();
         }
     }
+
+    function getOffersSorted($by) {
+        $sql = "SELECT * FROM offre order by ".$by." desc";
+
+
+        $db = config::getConnexion();
+        try{
+            
+            
+        $result=$db->query($sql);
+
+        return $result;
+        }
+        catch (Exception $e){
+            echo 'Erreur: '.$e->getMessage();
+        }
+    }
+    
     
 
     function deleteOffers($id) {

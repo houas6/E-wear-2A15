@@ -51,16 +51,19 @@
     
     <title>Ajouter une commande</title>
 </head>
+<script type="text/javascript" src="script.js" ></script>
 <body>
    
    <button><a href="affichercommande.php">Retour à la liste des commandes</a></button>
         <hr>
         
+        
         <div id="error">
             <?php echo $error; ?>
         </div>
     <h1>Ajouter une commande</h1>
-    <form name="c" onsubmit="return validateForm(event)" action=""  method="POST">
+    
+    <form name="c"  action=""  method="POST">
         <table border="1" align="center">
             
             <tr>
@@ -92,7 +95,7 @@
             </tr>
             
         </table>
-        <script type="text/javascript" ></script>
+        
     </form>
    
 </body>

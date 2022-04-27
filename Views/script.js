@@ -1,56 +1,48 @@
-function verif() {
-
-    var nom = document.forms["c"]["nom"].value;
-    var adresse = document.forms["c"]["adresse"].value;
-    var prix = document.forms["c"]["prix"].value;
-    var telephone = document.forms["c"]["telephone"].value;
-    var errorN = document.getElementById('errorNR');
-    var errorP = document.getElementById('errorPR');
-    var errorEprix = document.getElementById('errorMR');
-    var errorT = document.getElementById('errorNT');
-    var letters = /^[A-Za-z]+$/;
-   
+function verify(e) {
+    let error = "";
+  
+    // telephone
+    const telephone = document.getElementById("telephone").value;
+    // should be at least 10 characters
+    if (telephone.length ==8) {
+      error += "* telephone must be 8 numbers long.\n";
+    }
+    
+  
+    // nom
+    const nom = document.getElementById("nom").value;
+    // should not be empty
     if (nom == "") {
-        errorN.innerHTML = "Veuillez entrer votre nom!";
-
+      error += "* nom must not be empty.\n";
     }
-    else if (!(nom.match(letters) && nom.charAt(0).match(/^[A-Z]+$/))) {
-        errorN.innerHTML = "Veuillez entrer un nom valid!";
-    } else {
-        errorN.innerHTML = "";
-
-    }
-
-    if (adresse == "") {
-        errorP.innerHTML = "Veuillez entrer votre adresse!";
-
-    }
-    
-    else  {
-        errorP.innerHTML = "";
-
-    }
-
+  // adresse
+  const adresse = document.getElementById("adresse").value;
+  // should not be empty
+  if (adresse == "") {
+    error += "* adresse must not be empty.\n";
+  }
+    // prix
+    const prix = document.getElementById("prix").value;
+    // should not be empty
     if (prix == "") {
-        errorEprix.innerHTML = "Veuillez entrer votre prix!";
-
+      error += "* prix must not be empty.\n";
     }
+  
+   
+  
     
-    else {
-        errorEprix.innerHTML = "";
-
-    }
-    if (telephone == "") {
-        errorT.innerHTML = "Veuillez entrer votre numero de telephone!";
-
-    }
-    
-    else {
-        errorT.innerHTML = "";
-
-    }
-}
-function validateForm(e) {
+  
+    const errorContainer = document.getElementById("error");
+    errorContainer.innerText = error;
+  
+  
+  if (error) {
     e.preventDefault();
-    verif();
-}
+  } 
+  
+  
+  }
+  
+  const form = document.getElementById('c')
+  console.log(form)
+  form.addEventListener('submit', verify)

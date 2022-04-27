@@ -7,17 +7,20 @@ function verif() {
     var errorN = document.getElementById('errorNR');
     var errorEmail = document.getElementById('errorMR');
     var errorPass = document.getElementById('errorPass');
+    var er1=1;
+    var er2=1;
+    var er3=3;
     var letters = /^[A-Za-z]+$/;
 
     if (name == "") {
         errorN.innerHTML = "Veuillez entrer votre nom!";
-
+        
     }
     else if (!(name.match(letters) && name.charAt(0).match(/^[A-Z]+$/))) {
         errorN.innerHTML = "Veuillez entrer un nom valid!";
     } else {
         errorN.innerHTML = "";
-
+        er1=0;
     }
 
     if (email == "") {
@@ -29,7 +32,7 @@ function verif() {
     }
     else {
         errorEmail.innerHTML = "";
-
+        er2=0;
     }
 
     if (password == "") {
@@ -45,11 +48,19 @@ function verif() {
     }
     else {
         errorPass.innerHTML = "";
-
+        er3=0;
+    }
+    if(er1== 1 || er2==1 || er3== 1 ){
+        return 1;
+    }else{
+        return 0;
     }
 }
 
 function validateForm(e) {
+   if (verif()==1)
+   {
     e.preventDefault();
-    verif();
+    }
+    
 };

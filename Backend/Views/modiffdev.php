@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    
 
 
 </head>
@@ -142,15 +142,17 @@
                                             <h3 class="text-center">Modifier Client </h3>
                                         </div>
                                         <hr>
-                                        <form action="modiffdevPHP.php" method="POST">
+                                        <form action="modiffdevPHP.php" method="POST"  >
                                             <input type="hidden" name="ID" value="<?=$user["ID"]?>">
                                             <div class="form-group">
                                                 <label >Nom</label>
                                                 <input type="text" name="name"value="<?php echo $user["name"]?>" class="form-control"  >
+                                               
                                             </div>
                                             <div class="form-group">
                                                 <label >Email</label>
                                                 <input type="text" name="email" value="<?php echo $user["email"]?>" class="form-control" >
+                                                
                                             </div>
                                             <div class="form-group">
                                                 <label >Password</label>
@@ -159,6 +161,7 @@
                                             <div class="form-group">
                                                 <label >Adresse</label>
                                                 <input type="text"  name="adresse" value="<?php echo $user["adresse"]?>" class="form-control" >
+                                                
                                             </div>
                                            
                                             

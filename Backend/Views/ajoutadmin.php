@@ -70,7 +70,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    
 
 
 </head>
@@ -101,33 +101,6 @@
                             <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
                             <li><i class="fa fa-table"></i><a href="table-client.php">Client</a></li>
                             <li><i class="fa fa-table"></i><a href="table-admin.php">Admin</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-panier.html">Panier</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>
-                        </ul>
-                    </li>
-
-
-                    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Graphiques</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="Gra_produit.html"> GraphiqueProduit</a></li>
-
-                        </ul>
-                    </li>
-
-                    <h3 class="menu-title">Suppléments</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">S'identifier</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">S'inscrire</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Mot De Passe Oublier</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -186,7 +159,7 @@
                     <div class="col-lg-6" >
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Client</strong>
+                                <strong class="card-title">ADMIN</strong>
                             </div>
                             <div class="card-body" >
                                 <!-- Credit Card -->
@@ -196,30 +169,34 @@
                                             <h3 class="text-center">Ajouter </h3>
                                         </div>
                                         <hr>
-                                        <form action="" method="POST">
-
+                                        <form action="" method="POST" id="c">
+                                        <script type="text/javascript" src="cs.js"></script>
                                             <div class="form-group">
                                                 <label >ID client</label>
                                                 <input type="number" name="ID" class="form-control" hidden>
                                             </div>
                                             <div class="form-group">
                                                 <label >Nom</label>
-                                                <input type="text" name="name" class="form-control" >
+                                                <input type="text" name="name" id="name" class="form-control" >
+                                                <p style="color: red;" id="error_first"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >email</label>
-                                                <input type="email"  name="email" class="form-control" >
+                                                <input type="email"  name="email" id="email" class="form-control" >
+                                                <p style="color: red;" id="error_mail"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >password</label>
-                                                <input type="password"  name="pass" class="form-control" >
+                                                <input type="password"  name="pass" id="pass" class="form-control" >
+                                                <p style="color: red;" id="error_pass"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >adresse</label>
-                                                <input type="text" name="adresse"  class="form-control" >
+                                                <input type="text" name="adresse" id="adresse"  class="form-control" >
+                                                <p style="color: red;" id="error_adress"></p>
                                             </div>
                                             <div class="form-group">
-                                                <label >adresse</label>
+                                                <label >categorie</label>
                                                 <input type="text" name="categorie"  class="form-control" >
                                             </div>
 

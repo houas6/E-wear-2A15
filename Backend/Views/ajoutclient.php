@@ -128,7 +128,7 @@
                                         </div>
                                         <hr>
                                         <!--  onsubmit="return validateForm(event)"   -->
-                                        <form action="ajoutliv_form.php"   name="Form"    method="POST">
+                                        <form action="ajoutliv_form.php"   onsubmit="return validateForm(event)" name="Form"    method="POST">
 
                                             <div class="form-group">
                                                 <label >ID client</label>

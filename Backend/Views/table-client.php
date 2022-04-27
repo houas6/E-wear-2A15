@@ -100,6 +100,19 @@
                             <div class="card-header">
                                 <strong class="card-title">CLIENT</strong>    
                             </div>
+                            <form action="recherche.php" method="post">
+                            <tr>
+                            <td>
+                        <label for="rech">recherche Nom de client:
+                        </label>
+                    </td>
+                    <td>
+                      <input type="text" name="rech" id="rech" maxlength="20" style="color: black;">
+                    </td>
+                    <td><button type="button" class="btn btn-outline-danger">recherche</button></a></td>
+                       
+                </tr> 
+                </form>
                             <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -152,8 +165,8 @@
                                           
                                                      
                                                   </tr>
-                                          
-                                          
+
+
                                           <?php
                                           }
                                           ?>
@@ -162,7 +175,9 @@
                                         </tr>
                                        
                                     </tbody>
+                                    
                                 </table>
+                
                             </div>
                         </div>
                     </div>

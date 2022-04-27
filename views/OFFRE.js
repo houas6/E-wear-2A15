@@ -109,134 +109,81 @@ document.getElementById("c").addEventListener("submit", function(e){
     var cmail = document.getElementById("cmail");
     
     var rec = document.getElementById("rec");
-
+    var num = /^[A-Za-z1-9]+$/;
      myregex = /^[A-Za-z]+$/;
-	
+     var reWhiteSpace = new RegExp("/^\s+$/");
+     let regexx = new RegExp('[a-z0-9]+@gmail.com');
+     let regexxx = new RegExp('[a-z0-9]+@yahoo.tn');
 	if (!prenomR.value) {
-		error_last = "Last Name Required!!";
+		error_last = "first Name Required!!";
 	}
     
     else if (myregex.test(prenomR.value)==false){
-		error_last = "Last Name must contain only letters!!";
+		error_last = "first Name must contain only letters!!";
 	}
     
+    
     if (!nomR.value) {
-		error_first = "First Name Required!!";
+		error_first = "Last Name Required!!";
 	}
     else if (myregex.test(nomR.value)==false){
-		error_first = "first Name must contain only letters!!";
+		error_first = "Last Name must contain only letters!!";
 	}
     
 
     if (!mail.value) {
 		error_mail = "Email Required!!";
 	}
-    
-    
+    else if( regexx.test(mail.value)==false && regexxx.test(mail.value)==false )
+    {
+        error_mail = "Email invalid must have @gmail.com or @yahoo.tn!!";
+    }
     if (!cmail.value) {
 		error_cmail = "Email confirmation Required!!";
 	}
+    else if(!(cmail.value==mail.value))
+    {error_cmail = "Emails are not identical !!";}
     if (!rec.value) {
 		error_rec = "reclamation Required!!";
 	}
-    
+    else if (myregex.test(rec.value)==false && reWhiteSpace.test(s.value)==false && num.test(rec.value)==false){
+		error_rec = "reclamation must contain only letters and numbers !!";
+	}
 	
     if (error_last) {
 		e.preventDefault();
 		document.getElementById("error_last").innerHTML = error_last;
-		return false;
-	}
-     if (error_first) {
+		return false;}
+        else
+        {
+            document.getElementById("error_last").innerHTML = "";
+        }
+      if (error_first) {
 		e.preventDefault();
 		document.getElementById("error_first").innerHTML = error_first;
 		return false;
 	}
+    else 
+    {document.getElementById("error_first").innerHTML = "";}
 
     if (error_mail) {
 		e.preventDefault();
 		document.getElementById("error_mail").innerHTML = error_mail;
 		return false;
 	}
-
+else
+{document.getElementById("error_mail").innerHTML = "";}
     if (error_cmail) {
 		e.preventDefault();
 		document.getElementById("error_cmail").innerHTML = error_cmail;
 		return false;
 	}
-
+else{document.getElementById("error_cmail").innerHTML = "";}
 
     if (error_rec) {
 		e.preventDefault();
 		document.getElementById("error_rec").innerHTML = error_rec;
 		return false;
 	}
-    var error_laste;
-    var error_maile;
-    var error_s;
-    var error_mess;
-    
-    /*var inputs = this.getElementsByTagName("input");
- 
-    for (var i = 0; i < inputs.length; i++) {
-        console.log(inputs[i]);
-        if (!inputs[i].value) {
-            erreur = "Please complete all fields! ";
-        }
-    }*/
-
-    var nomRe = document.getElementById("nomRe");
-    var maile = document.getElementById("maile");
-    var sujetRe = document.getElementById("sujetRe");
-    var  messageRe= document.getElementById("messageRe");
-    
-
-     myregex = /^[A-Za-z]+$/;
-    
-    if (!nomRe.value) {
-        error_laste = "Last Name Required!!";
-    }
-    
-    else if (myregex.test(nomRe.value)==false){
-        error_laste = "Last Name must contain only letters!!";
-    }
-    else
-    {error_laste = "";}
-
-    if (!maile.value) {
-        error_maile = "Email Required!!";
-    }
-    
-    
-    if (!sujetRe.value) {
-        error_s = "subject Required!!";
-    }
-    if (!messageRe.value) {
-        error_mess = "message Required!!";
-    }
-    
-    
-    if (error_laste) {
-        ee.preventDefault();
-        document.getElementById("error_laste").innerHTML = error_laste;
-        return false;
-    }
-
-    if (error_maile) {
-        ee.preventDefault();
-        document.getElementById("error_maile").innerHTML = error_maile;
-        return false;
-    }
-
-    if (error_s) {
-        ee.preventDefault();
-        document.getElementById("error_s").innerHTML = error_s;
-        return false;
-    }
-
-
-    if (error_mess) {
-        ee.preventDefault();
-        document.getElementById("error_mess").innerHTML = error_mess;
-        return false;
-    }
+    else{document.getElementById("error_rec").innerHTML = "";}
 });

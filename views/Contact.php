@@ -129,7 +129,7 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="index.html" style="padding: 44px 20px;">Home</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="index.php" style="padding: 44px 20px;">Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 44px 20px;">Offers</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 44px 20px;">Contact</a>
 </li></ul>
@@ -140,7 +140,7 @@
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Accueil.html">Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Offers</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.php">Contact</a>
 </li></ul>
               </div>
             </div>
@@ -253,30 +253,30 @@ method="post">
                
 				<tr>
                     <td>
-                        <label for="nomR">Nom:
+                        <label for="nomR">Name:
                         </label>
                     </td>
                     <td>
-                      <input type="text" name="nomR" id="nomR" maxlength="20"  style="color: black;">
+                      <input type="text" name="nomR" id="nomR" maxlength="20"  style="color: black;" placeholder="your name">
                       <p style="color: red;" id="error_first"></p>
                   </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="prenomR">prenom:
+                        <label for="prenomR">first name:
                         </label>
                     </td>
                     <td>
-                      <input type="text" name="prenomR" id="prenomR" maxlength="20" style="color: black;">
+                      <input type="text" name="prenomR" id="prenomR" maxlength="20" style="color: black;" placeholder="your first name">
                       <p style="color: red;" id="error_last"></p>
                     </td>
                 </tr>
                 <td>
-                        <label for="mail">mail:
+                        <label for="mail">Email:
                         </label>
                     </td>
                     <td>
-                      <input type="text" name="mail" id="mail" maxlength="20" style="color: black;">
+                      <input type="text" name="mail" id="mail" maxlength="20" style="color: black;" placeholder="your Email">
                       <p style="color: red;" id="error_mail"></p>
                     </td>
                 </tr>
@@ -295,7 +295,7 @@ method="post">
                         </label>
                     </td>
                     <td>
-                      <textarea type="text" name="rec" id="rec" rows="5" style="color: black;"></textarea>
+                      <textarea type="text" name="rec" id="rec" rows="5" style="color: black;" placeholder="your reclamation"></textarea>
                       <p style="color: red;" id="error_rec"></p>
                     </td>
                 </tr>            
@@ -309,10 +309,11 @@ method="post">
                     </td>
                 </tr>
             </table>
+            <script type="text/javascript" src="OFFRE.js"></script>
         </form>
           </div>
       </div>
-      <script type="text/javascript" src="OFFRE.js"></script>
+
       </section>
       <hr>
       <section class="u-clearfix u-palette-5-dark-1 u-section-1" id="sec-6473">
@@ -346,12 +347,12 @@ method="post">
             <?php echo $error11; ?>
         </div>
         Contact us
-        <form id="c" action="contact.php" method="POST">
+        <form id="bad" action="contact.php" method="POST">
             <table border="0" align="center">
                
 				<tr>
                     <td>
-                        <label for="nomRe">Nom:
+                        <label for="nomRe">Name:
                         </label>
                     </td>
                     <td>
@@ -370,7 +371,7 @@ method="post">
                     </td>
                 </tr>
                 <td>
-                        <label for="sujetRe">sujet:
+                        <label for="sujetRe">Subject:
                         </label>
                     </td>
                     <td>
@@ -380,7 +381,7 @@ method="post">
                 </tr>
                 <tr>
                     <td>
-                        <label for="messageRe">message:
+                        <label for="messageRe">Message:
                         </label>
                     </td>
                     <td>
@@ -398,10 +399,11 @@ method="post">
                     </td>
                 </tr>
             </table>
+            <script type="text/javascript" src="classemess.js"></script>
         </form>
           </div>
       </div>
-      <script type="text/javascript" src="OFFRE.js"></script>
+
       </section>
      
     

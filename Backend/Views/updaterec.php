@@ -174,7 +174,7 @@ include_once '../controller/reclamationC.php';
                                         </form>
                                     </div>
                                 </div>
-
+                             
                             </div>
                         </div> <!-- .card -->
 

@@ -1,5 +1,5 @@
 <?PHP
-	include '../config.php';
+	include '../../config.php';
 	include_once '../Model/Stock.php';
 
 	class StockC {

@@ -59,6 +59,7 @@
                         <li><i class="fa fa-table"></i><a href="table-client.php">reclamation</a></li>
                         <li><i class="fa fa-table"></i><a href="table-message.php">message</a></li>
                         <li><i class="fa fa-table"></i><a href="table-commande.php">commande</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-stock.php">stock</a></li>
                     </ul>
                 </li></ul>
         </div><!-- /.navbar-collapse -->
@@ -147,19 +148,20 @@
 
                                                       <td> <a href="deletecommande.php?rep=<?php echo $ligne['idCom'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
                                                       <td> <a href="updatecommande.php?id=<?=$ligne["idCom"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
+                                                      
 
                                                                                     
                                                      
                                           
                                                      
                                                   </tr>
-                                          
+                                                  
                                           
                                           <?php
                                           }
                                           ?>
                                            
-
+                                           <td> <a href="pdf.php"><button type="button" class="btn btn-outline-info">Importer pdf</button></a></td>
                                         </tr>
                                        
                                     </tbody>

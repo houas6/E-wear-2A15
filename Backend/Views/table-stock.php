@@ -105,8 +105,9 @@
                             <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Nombre article</th>
+                                            
                                             <th>Disponibilité</th>
+                                            <th>Nombre article</th>
                                             <th>date arrivage</th>
                                             
                                            <!-- <th> savoir plus </th>-->
@@ -141,7 +142,7 @@
 
 
                                                     
-
+                                                      <td> <a href="ajoutstock.php?rep=<?php echo $ligne['nbrarticle'];?>"><button type="button" class="btn btn-outline-danger">Ajouter</button></a></td>
                                                       <td> <a href="deletestock.php?rep=<?php echo $ligne['nbrarticle'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
                                                       <td> <a href="updatestock.php?id=<?=$ligne["nbrarticle"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
 

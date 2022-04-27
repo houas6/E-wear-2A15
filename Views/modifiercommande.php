@@ -30,7 +30,7 @@
                 $_POST['adresse'],
                 $_POST['prix']
             );
-            $commandeC->modifiercommande($commande,$_POST['idCom']);
+            $commandeC->modifiercours($commande,$_POST['idCom']);
             header('Location:affichercommande.php');
         }
         else
@@ -53,7 +53,7 @@
             </div>
     <?php
                 if (isset($_POST['idCom'])){
-                    $commande= $commandeC->recuperercommande($_POST['idCom']);
+                    $commande= $commandeC->recuperercours($_POST['idCom']);
                     
             ?>
             

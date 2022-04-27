@@ -149,21 +149,18 @@ include_once '../Controller/stockC.php';
                                         <form action="modifierdevphpstock.php" method="POST">
                                             <input type="hidden" name="idCom" value="<?=$stock["idCom"]?>">
                                             <div class="form-group">
-                                                <label >Nom</label>
-                                                <input type="text" name="nom"value="<?php echo $stock["nom"]?>" class="form-control"  >
+                                                <label >Disponibilite</label>
+                                                <input type="text" name="dispo"value="<?php echo $stock["dispo"]?>" class="form-control"  >
                                             </div>
                                             <div class="form-group">
-                                                <label >Telephone</label>
-                                                <input type="number"  name="telephone" value="<?php echo $stock["telephone"]?>" class="form-control" >
+                                                <label >nombre article</label>
+                                                <input type="number"  name="nbrarticle" value="<?php echo $stock["nbrarticle"]?>" class="form-control" >
                                             </div>
                                             <div class="form-group">
-                                                <label >Adresse</label>
-                                                <input type="text"  name="adresse" value="<?php echo $stock["adresse"]?>" class="form-control" >
+                                                <label >Date arrivage</label>
+                                                <input type="date"  name="datearr" value="<?php echo $stock["datearr"]?>" class="form-control" >
                                             </div>
-                                            <div class="form-group">
-                                                <label >prix</label>
-                                                <input type="number"  name="prix" value="<?php echo $stock["prix"]?>" class="form-control" >
-                                            </div>
+                                            
                                            
 
 

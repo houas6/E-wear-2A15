@@ -5,7 +5,7 @@
     $Stock = null;
 
     // create an instance of the controller
-    $stock = new StockC();
+    $StockC = new StockC();
     if (
         
         isset($_POST["dispo"]) &&
@@ -25,7 +25,7 @@
                 $_POST['dispo'],
 				$_POST['nbrarticle'],
                 $_POST['datearr'],
-                $_POST['produit'],
+                $_POST['produit']
             );
             $StockC->ajouterstock($stock);
            header('Location:table-stock.php');

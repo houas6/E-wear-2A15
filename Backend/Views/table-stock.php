@@ -153,7 +153,7 @@
                                                      
                                                   </tr>
                                           
-                                                  <td> <a href="ajoutstock.php?rep=<?php echo $ligne['produit'];?>"><button type="button" class="btn btn-outline-danger">Ajouter</button></a></td>
+                                                 
                                           <?php
                                           }
                                           ?>
@@ -171,11 +171,11 @@
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
-       <!-- <div>
+       < <div>
             <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="ajoutclient.php">Ajouter</a>
+                <a href="ajoutstock.php">Ajouter</a>
             </button>
-          </div>-->
+          </div>
 
         <div class="content mt-3">
             <div class="animated fadeIn">

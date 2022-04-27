@@ -161,7 +161,7 @@
                                           }
                                           ?>
                                            
-                                           <td> <a href="pdf.php"><button type="button" class="btn btn-outline-info">Importer pdf</button></a></td>
+                                         
                                         </tr>
                                        
                                     </tbody>
@@ -174,11 +174,14 @@
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
-       <!-- <div>
+       <div>
             <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="ajoutclient.php">Ajouter</a>
+                <a href="pdf.php">Importer</a>
             </button>
-          </div>-->
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
+                <a href="ajoutcommande.php">Ajouter commande</a>
+            </button>
+          </div>
 
         <div class="content mt-3">
             <div class="animated fadeIn">

@@ -33,7 +33,7 @@
                         $_POST['prix']
             );
             $commandeC->ajoutercommande($commande);
-            header('Location:affichercommande.php');
+            header('Location:table-commande.php');
         }
         else
             $error = "Missing information";
@@ -48,19 +48,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
         
-    
+    </script>
     <title>Ajouter une commande</title>
 </head>
 <body>
    
-   <button><a href="affichercommande.php">Retour à la liste des commandes</a></button>
+   <button><a href="table-commande.php">Retour</a></button>
         <hr>
         
         <div id="error">
             <?php echo $error; ?>
         </div>
     <h1>Ajouter une commande</h1>
-    <form name="c" onsubmit="return validateForm(event)" action=""  method="POST">
+    <form name="bad"  action=""  method="POST">
         <table border="1" align="center">
             
             <tr>
@@ -92,7 +92,7 @@
             </tr>
             
         </table>
-        <script type="text/javascript" ></script>
+        <script type="text/javascript" src="script.js">
     </form>
    
 </body>

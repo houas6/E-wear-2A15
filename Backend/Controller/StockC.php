@@ -4,12 +4,12 @@
 
 	class StockC {
 		
-		function ajouterStock($Stock){
-			
+		function ajouterstock($Stock){
+			$db = config::getConnexion();
 			
 			$sql="INSERT INTO Stock (dispo, nbrarticle, datearr,produit) 
 			VALUES (:dispo,:nbrarticle,:datearr,:produit)";
-			$db = config::getConnexion();
+			
 			try{
 				$query = $db->prepare($sql);
 			

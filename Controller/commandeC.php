@@ -64,7 +64,7 @@
 				die('Erreur: '.$e->getMessage());
 			}
 		}
-		function modifiercommande($commande,$idCom){
+		function modifiercommande($idCom){
 			try {
 				$db = config::getConnexion();
 				$query = $db->prepare(

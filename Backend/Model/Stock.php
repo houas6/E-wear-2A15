@@ -6,11 +6,12 @@
 		private  $nbrarticle= null;
 		private  $datearr = null;
 		
-		function __construct( $produit,$dispo,  $nbrarticle,  $datearr){
-			$this->produit=$produit;
+		function __construct($dispo,  $nbrarticle,  $datearr,$produit){
+			
 			$this->dispo=$dispo;
 			$this->nbrarticle=$nbrarticle;
 			$this->datearr=$datearr;
+			$this->produit=$produit;
 			
 		}
 		

@@ -1,24 +1,22 @@
 <?PHP
 	class Stock{
-		private  $idCom = null;
-		private  $idP = null;
+		
+		private  $produit = null;
 		private  $dispo= null;
 		private  $nbrarticle= null;
 		private  $datearr = null;
 		
-		function __construct( $nbrarticle,  $dispo,  $datearr){
-	
-			$this->nbrarticle=$nbrarticle;
+		function __construct( $produit,$dispo,  $nbrarticle,  $datearr){
+			$this->produit=$produit;
 			$this->dispo=$dispo;
+			$this->nbrarticle=$nbrarticle;
 			$this->datearr=$datearr;
 			
 		}
 		
-		function getidCom() {
-			return $this->idCom;
-		}
-        function getidP() {
-			return $this->idP;
+		
+        function getproduit() {
+			return $this->produit;
 		}
 		function getnbrarticle() {
 			return $this->nbrarticle;
@@ -31,15 +29,17 @@
 			return $this->datearr;
 		}
 		
-
-		function setnbrarticle( $nbrarticle) {
+		function setproduit( int $produit) {
+			$this->produit=$produit;
+		}
+		function setnbrarticle(int $nbrarticle) {
 			$this->nbrarticle=$nbrarticle;
 		}
-		function setdispo( $dispo) {
-			$this->dispo;
+		function setdispo(string $dispo) {
+			$this->dispo=$dispo;
 		}
-		function setdatearr( $datearr) {
-			$this->datearr;
+		function setdatearr(string $datearr) {
+			$this->datearr=$datearr;
 		}
 		
 		

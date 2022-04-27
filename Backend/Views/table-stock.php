@@ -105,7 +105,7 @@
                             <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            
+                                            <th>ID PRODUIT</th>
                                             <th>Disponibilité</th>
                                             <th>Nombre article</th>
                                             <th>date arrivage</th>
@@ -124,27 +124,28 @@
                                             $rep= $con->query($req);
                                              if(isset($_POST["search"])) {
                                                 $dispo = $_POST["search-area"];
-                                                $rep = $con->query("select * from stock where idCom like '%$idCom%'");   
+                                                $rep = $con->query("select * from stock where produit like '%$produit%'");   
 
                                             }
                                           while($ligne=$rep->fetch()){
                                           ?>
                                                   <tr>
                                                   
-                                          
-                                                      <td><?php echo $ligne["nbrarticle"];?></td>
+                                                      
+                                                      
                                                   
                                                   
                                                       <td><?php echo $ligne["dispo"];?></td>
-                                                  
+                                                      <td><?php echo $ligne["nbrarticle"];?></td>
                                                   
                                                       <td><?php echo $ligne["datearr"];?></td>
+                                                      <td><?php echo $ligne["produit"];?></td>
 
 
                                                     
-                                                      <td> <a href="ajoutstock.php?rep=<?php echo $ligne['nbrarticle'];?>"><button type="button" class="btn btn-outline-danger">Ajouter</button></a></td>
-                                                      <td> <a href="deletestock.php?rep=<?php echo $ligne['nbrarticle'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="updatestock.php?id=<?=$ligne["nbrarticle"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
+                                                     
+                                                      <td> <a href="deletestock.php?rep=<?php echo $ligne['produit'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+                                                      <td> <a href="updatestock.php?id=<?=$ligne["produit"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
 
                                                                                     
                                                      
@@ -152,7 +153,7 @@
                                                      
                                                   </tr>
                                           
-                                          
+                                                  <td> <a href="ajoutstock.php?rep=<?php echo $ligne['produit'];?>"><button type="button" class="btn btn-outline-danger">Ajouter</button></a></td>
                                           <?php
                                           }
                                           ?>

@@ -149,15 +149,13 @@
                                 <div id="pay-invoice">
                                     <div class="card-body">
                                         <div class="card-title">
-                                            <h3 class="text-center">Ajouter </h3>
+                                           
+                                        <h3 class="text-center">Ajouter </h3>
                                         </div>
                                         <hr>
-                                        <form action="ajouterstock" method="POST">
-
-                                            <div class="form-group">
-                                                <label >ID produit</label>
-                                                <input type="number" name="idP" class="form-control" >
-                                            </div>
+                                        <form action="ajouterstock.php" method="POST">
+                                        
+                                            
                                             <div class="form-group">
                                                 <label >Disponibilite</label>
                                                 <input type="text" name="dispo" class="form-control" >
@@ -170,16 +168,20 @@
                                                 <label >date arrivage</label>
                                                 <input type="date"  name="datearr" class="form-control" >
                                             </div>
+                                            <div class="form-group">
+                                                <label >ID PRODUIT</label>
+                                                <input type="number" name="produit" class="form-control" >
+                                            </div>
                                             
-
-
-                                                <div>
+                                            <div>
                                                     <button type="submit" class="btn btn-lg btn-info btn-block">
 
                                                         <span >Ajouter </span>
 
                                                     </button>
                                                 </div>
+
+                                                
                                         </form>
                                     </div>
                                 </div>

@@ -7,8 +7,8 @@
 		function ajouterStock($Stock){
 			
 			
-			$sql="INSERT INTO Stock (dispo, nbrarticle, datearr) 
-			VALUES (:dispo,:nbrarticle,:datearr)";
+			$sql="INSERT INTO Stock (dispo, nbrarticle, datearr,produit) 
+			VALUES (:dispo,:nbrarticle,:datearr,:produit)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
@@ -18,6 +18,7 @@
 					'dispo' => $Stock->getdispo(),
 					'nbrarticle' => $Stock->getnbrarticle(),
 					'datearr' => $Stock->getdatearr(),
+					'produit' => $Stock->getproduit(),
 					
 				]);			
 			}
@@ -41,11 +42,11 @@
 			}	
 		}
 		
-		function supprimerStock($idCom){
-			$sql="DELETE FROM Stock WHERE idCom= :idCom";
+		function supprimerStock($produit){
+			$sql="DELETE FROM Stock WHERE produit= :produit";
 			$db = config::getConnexion();
 			$req=$db->prepare($sql);
-			$req->bindValue(':idCom',$idCom);
+			$req->bindValue(':produit',$produit);
 			try{
 				$req->execute();
 			}
@@ -53,21 +54,8 @@
 				die('Erreur: '.$e->getMessage());
 			}
 		}
-		function recupererStock($idCom){
-			$sql="SELECT * from Stock where idCom=$idCom";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				
-				$query->execute();
-				$Stock=$query->fetch();
-				return $Stock;
-			}
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
-			}
-		}
-		function modifierStock($Stock,$idCom){
+		
+		function modifierStock($Stock,$produit){
 			try {
 				$db = config::getConnexion();
 				$query = $db->prepare(
@@ -76,14 +64,14 @@
 						nbrarticle = :nbrarticle,
 						datearr = :datearr,
 						
-					WHERE idCom = :idCom'
+					WHERE produit = :produit'
 				);
 				$query->execute([
 					'dispo' => $Stock->getdispo(),
 					'nbrarticle' => $Stock->getnbrarticle(),
 					'datearr' => $Stock->getdatearr(),
 					
-					'idCom' => $idCom
+					'produit' => $produit
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
 			} catch (PDOException $e) {

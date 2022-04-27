@@ -4,7 +4,7 @@ include_once '../Controller/stockC.php';
     $id =(int) $_GET["id"];
     $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
     //creation un variable chaine de caractere contenant la requete sql 
-    $req ="select * from stock where idCom = $id";
+    $req ="select * from stock where produit = $id";
   //execution de la requete avec la methode query la reponse sera mise dans $rep
     $resp= $con->prepare($req);
     $resp->execute();
@@ -147,10 +147,11 @@ include_once '../Controller/stockC.php';
                                         </div>
                                         <hr>
                                         <form action="modifierdevphpstock.php" method="POST">
-                                            <input type="hidden" name="idCom" value="<?=$stock["idCom"]?>">
-                                            <div class="form-group">
+                                          
+                                            
+                                        <div class="form-group">
                                                 <label >Disponibilite</label>
-                                                <input type="text" name="dispo"value="<?php echo $stock["dispo"]?>" class="form-control"  >
+                                                <input type="text" name="dispo" value="<?php echo $stock["dispo"]?>" class="form-control"  >
                                             </div>
                                             <div class="form-group">
                                                 <label >nombre article</label>
@@ -161,7 +162,10 @@ include_once '../Controller/stockC.php';
                                                 <input type="date"  name="datearr" value="<?php echo $stock["datearr"]?>" class="form-control" >
                                             </div>
                                             
-                                           
+                                            <div class="form-group">
+                                                <label >ID PRODUIT</label>
+                                                <input type="number" name="produit" value="<?php echo $stock["produit"]?>" class="form-control"  >
+                                            </div>  
 
 
                                                 <div>

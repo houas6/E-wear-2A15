@@ -1,8 +1,8 @@
 
 <?php
     include_once '../../config.php';
-    include_once '../../Model/Offer.php';
-    include_once '../../Controller/Offer.php';
+    include_once '../../Model/game.php';
+    include_once '../../Controller/game.php';
 
 
 
@@ -14,18 +14,18 @@ if (
         if ($_POST['action'] == 'delete'){
 
             $id  = $_POST['id'];
-            $controller = new OfferController();
-            $controller->deleteOffers($id);
+            $controller = new gameController();
+            $controller->deletegame($id);
         }
     }
-            $controller = new OfferController();
+            $controller = new gameController();
 
 if (
-    isset($_POST['tri']) && isset($_POST['action']) && ($_POST['action'] == 'sort')
+    isset($_POST['by']) && isset($_POST['action']) && ($_POST['action'] == 'sort')
     ) {
-            $tri = $_POST['tri'];
+            $by = $_POST['by'];
 
-            $result = $controller->getOffersSorted($tri);
+            $result = $controller->getOffersSorted($by);
         }
 else {
   $result = $controller->getOffers();
@@ -71,7 +71,7 @@ else {
       <th>
         <form method="post">
       <input type="hidden" value="sort" name="action" />
-      <input type="hidden" value="id" name="tri" />
+      <input type="hidden" value="id" name="by" />
       <button>id</button>
     </form>
     </th>
@@ -79,7 +79,7 @@ else {
       <th>
         <form method="post">
       <input type="hidden" value="sort" name="action" />
-      <input type="hidden" value="description" name="tri" />
+      <input type="hidden" value="description" name="by" />
       <button>description</button>
     </form>
     </th>
@@ -87,7 +87,7 @@ else {
       <th>
         <form method="post">
       <input type="hidden" value="sort" name="action" />
-      <input type="hidden" value="pourcentage" name="tri" />
+      <input type="hidden" value="code" name="by" />
       <button>pourcentage</button>
     </form>
     </th>
@@ -95,18 +95,12 @@ else {
       <th>
         <form method="post">
       <input type="hidden" value="sort" name="action" />
-      <input type="hidden" value="dateDebut" name="tri" />
+      <input type="hidden" value="email" name="by" />
       <button>date debut</button>
     </form>
     </th>
 
-      <th>
-        <form method="post">
-      <input type="hidden" value="sort" name="action" />
-      <input type="hidden" value="dateFin" name="tri" />
-      <button>date fin</button>
-    </form>
-    </th>
+      
 
 
       <th>update</th>
@@ -123,10 +117,10 @@ while($ligne=$result->fetch()){
     <tr>
     <td>".$ligne["ID"]."</td>
     <td>".$ligne["description"]."</td>
-    <td>".$ligne["pourcentage"]."</td>
-    <td>".$ligne["dateDebut"]."</td>
-    <td>".$ligne["dateFin"]."</td>
-    <td  class='text-blue-500'><form method='post' action='updateOffer.php'>
+    <td>".$ligne["code"]."</td>
+    <td>".$ligne["email"]."</td>
+
+    <td  class='text-blue-500'><form method='post' action='updategame.php'>
     <input type='hidden' name='id' value='".$ligne["ID"]."' /> 
     <input type='submit' value='update' /> 
     </form></td>
@@ -147,4 +141,3 @@ while($ligne=$result->fetch()){
 
 </body>
 </html>
-

@@ -1,9 +1,9 @@
 <?php
 
-class OfferController {
+class GameController {
 
-    function addOffer($offer) {
-        $sql = "INSERT INTO offre (description, pourcentage, dateDebut, dateFin) VALUES ('".$offer->getDescription()."', '".$offer->getPourcentage()."', '".$offer->getDateDebut()."', '".$offer->getDateFin()."');";
+    function addgame($game) {
+        $sql = "INSERT INTO game (ID, Description, code, email) VALUES ('".$game->getid()."', '".$game->getdescription()."', '".$game->getcode()."', '".$game->getemail()."');";
 
 
         $db = config::getConnexion();
@@ -18,8 +18,8 @@ class OfferController {
     }
 
 
-    function getOffer($id) {
-        $sql = "SELECT * FROM offre WHERE ID = ".$id;
+    function getgame($id) {
+        $sql = "SELECT * FROM game WHERE ID = ".$id;
 
         $db = config::getConnexion();
         try{
@@ -31,8 +31,8 @@ class OfferController {
         }
     }
 
-    function getOffers() {
-        $sql = "SELECT * FROM offre";
+    function getgame() {
+        $sql = "SELECT * FROM game";
 
 
         $db = config::getConnexion();
@@ -48,8 +48,8 @@ class OfferController {
         }
     }
 
-    function getOffersSorted($tri) {
-        $sql = "SELECT * FROM offre order by ".$tri." desc";
+    function getOffersSorted($by) {
+        $sql = "SELECT * FROM game order by ".$by." desc";
 
 
         $db = config::getConnexion();
@@ -68,7 +68,7 @@ class OfferController {
     
 
     function deleteOffers($id) {
-        $sql = "DELETE FROM offre WHERE ID = ".$id;
+        $sql = "DELETE FROM game WHERE ID = ".$id;
 
 
         $db = config::getConnexion();
@@ -81,9 +81,9 @@ class OfferController {
         }
     }
 
-
-    function updateOffer($offer) {
-        $sql = "UPDATE offre SET description = '".$offer->getDescription()."', pourcentage = '".$offer->getPourcentage()."', dateDebut = '".$offer->getDateDebut()."', dateFin = '".$offer->getDateFin()."' WHERE ID = ".$offer->getId();
+}
+    function updateOffer($game) {
+        $sql = "UPDATE game SET ID = '".$game->getid()."', Description = '".$game->descrption()."', code = '".$game->getcode()."', email = '".$game->getemail()."' WHERE ID = ".$->getId();
 
         $db = config::getConnexion();
         try{

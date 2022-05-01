@@ -60,6 +60,10 @@
                         <ul class="sub-menu children dropdown-menu">
                             <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
                             <li><i class="fa fa-table"></i><a href="table-stock.php">Stock</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-admin.php">admin</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-client.php">reclamation</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-message.php">message</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-commande.php">commande</a></li>
                            
                         </ul>
                     </li>

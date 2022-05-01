@@ -51,7 +51,7 @@
     
     <title>Ajouter une commande</title>
 </head>
-<script type="text/javascript" src="script.js" ></script>
+
 <body>
    
    <button><a href="affichercommande.php">Retour à la liste des commandes</a></button>
@@ -63,28 +63,29 @@
         </div>
     <h1>Ajouter une commande</h1>
     
-    <form name="c"  action=""  method="POST">
+    <form name="form" id="Form" action=""  onsubmit="return validateForm(event)"method="POST"><script type="text/javascript" src="script.js" ></script>
         <table border="1" align="center">
             
             <tr>
                 <td>Nom</td>
                 <td><input type="text" name="nom" id="nom"></td>
             </tr>
-            
+            <p style="color: red;" id="err1"></p>
             <tr>
                 <td>Telephone</td>
                 <td><input type="number" name="telephone" id="telephone"></td>
             </tr>
+            <p style="color: red;" id="err3"></p>
             <tr>
                 <td>Adresse</td>
                 <td><input type="text" name="adresse" id="adresse"></td>
             </tr>
-
+            <p style="color: red;" id="err4"></p>
             <tr>
                 <td>Prix</td>
                 <td><input type="number" name="prix" id="prix"></td>
             </tr>
-            
+            <p style="color: red;" id="err2"></p>
             <tr>
                 
                 <td><input type="submit" name="Ajouter" value="Passer la commande">

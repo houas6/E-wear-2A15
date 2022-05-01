@@ -64,29 +64,39 @@
 				die('Erreur: '.$e->getMessage());
 			}
 		}
-		function modifiercommande($idCom){
+		function afficherCommandetri(){
+			
+			$sql="SELECT * FROM commande ORDER BY nom";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
+		
+		function modifiercommande($commande,$idCom){
 			try {
 				$db = config::getConnexion();
-				$query = $db->prepare(
-					'UPDATE commande SET 
-						nom = :nom, 
-						telephone = :telephone,
-						adresse = :adresse,
-						prix = :prix
-					WHERE idCom = :idCom'
-				);
-				$query->execute([
-					'nom' => $commande->getNom(),
-					'telephone' => $commande->gettelephone(),
-					'adresse' => $commande->getadresse(),
-					'prix' => $commande->getPrix(),
-					'idCom' => $idCom
-				]);
+			
+
+				$sql="UPDATE commande SET nom= :nom,telephone= :telephone,adresse= :adresse,prix= :prix WHERE idCom= :idCom";
+			    $db = config::getConnexion();
+				$req=$db->prepare($sql);
+				$req->bindValue(':nom', $commande->getnom());
+				$req->bindValue(':telephone', $commande->gettelephone());
+                $req->bindValue(':adresse', $commande->getadresse());
+				$req->bindValue(':prix', $commande->getprix());
+				
+				
+				$req->execute();
+
 				echo $query->rowCount() . " records UPDATED successfully <br>";
 			} catch (PDOException $e) {
 				$e->getMessage();
 			}
-		}
 	}
 
 ?>

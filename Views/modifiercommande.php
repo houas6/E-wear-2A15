@@ -30,7 +30,7 @@
                 $_POST['adresse'],
                 $_POST['prix']
             );
-            $commandeC->modifiercommande($_POST['idCom']);
+            $commandeC->modifiercommande($commande,$_POST['idCom']);
             header('Location:affichercommande.php');
         }
         else

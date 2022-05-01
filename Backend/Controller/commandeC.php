@@ -25,43 +25,7 @@
 				echo 'Erreur: '.$e->getMessage();
 			}			
 		}
-		function modifiercours($Commande, $idCom){
-			try {
-				$db = config::getConnexion();
-				$query = $db->prepare(
-					'UPDATE commande SET 
-						nom = :nom, 
-						telephone = :telephone,
-						adresse = :adresse,
-						prix = :prix
-					WHERE idCom = :idCom'
-				);
-				$query->execute([
-					'nom' => $Commande->getNom(),
-					'telephone' => $Commande->gettelephone(),
-					'adresse' => $Commande->getadresse(),
-					'prix' => $Commande->getPrix(),
-					'idCom' => $idCom
-				]);
-				echo $query->rowCount() . " records UPDATED successfully <br>";
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
-		}
-		function recuperercours($idCom){
-			$sql="SELECT * FROM commande where idCom=$idCom";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				$query->execute();
-
-				$Cours=$query->fetch();
-				return $Cours;
-			}
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
-			}
-		}
+		
 		
 		function affichercommande(){
 			
@@ -88,6 +52,19 @@
 				die('Erreur: '.$e->getMessage());
 			}
 		}
+		function afficherCommandetri(){
+			
+			$sql="SELECT * FROM commande ORDER BY nom";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
+		
 		function recuperercommande($idCom){
 			$sql="SELECT * from commande where idCom=$idCom";
 			$db = config::getConnexion();

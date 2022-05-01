@@ -1,3 +1,17 @@
+<?php
+    include "../Controller/commandeC.php";
+    $commandeC=new CommandeC();
+    $Liste=$commandeC->afficherCommandetri();
+    $bdd=new PDO('mysql:host=localhost;dbname=projet', 'root', '',);
+$Liste = $bdd->query('SELECT * FROM commande ORDER BY nom');
+if (isset ($_GET['s']) AND !empty($_GET['s'])){
+    $recherche =	htmlspecialchars($_GET['s']);
+  $Liste = $bdd->query('SELECT * FROM commande WHERE nom  LIKE "%' .$recherche .'%" '  ); 
+  
+}
+?>
+
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -58,8 +72,8 @@
                         <li><i class="fa fa-table"></i><a href="table-admin.php">admin</a></li>
                         <li><i class="fa fa-table"></i><a href="table-client.php">reclamation</a></li>
                         <li><i class="fa fa-table"></i><a href="table-message.php">message</a></li>
-                        <li><i class="fa fa-table"></i><a href="table-stock.php">stock</a></li>
                         <li><i class="fa fa-table"></i><a href="table-commande.php">commande</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-stock.php">stock</a></li>
                     </ul>
                 </li></ul>
         </div><!-- /.navbar-collapse -->
@@ -100,86 +114,55 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Stock</strong>    
+                                <strong class="card-title">CLIENT</strong>    
                             </div>
                             <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID PRODUIT</th>
-                                            <th>Disponibilité</th>
-                                            <th>Nombre article</th>
-                                            <th>date arrivage</th>
-                                            
+                                            <th>Id Commande</th>
+                                            <th>Nom</th>
+                                            <th>Telephone</th>
+                                            <th>Adresse</th>
+                                            <th>Prix</th>
                                            <!-- <th> savoir plus </th>-->
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <?php
-                                            $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
-                                            //creation un variable chaine de caractere contenant la requete sql 
-                                            $req ="select * from stock";
-                                          //execution de la requete avec la methode query la reponse sera mise dans $rep
-                                            $rep= $con->query($req);
-                                             if(isset($_POST["search"])) {
-                                                $dispo = $_POST["search-area"];
-                                                $rep = $con->query("select * from stock where produit like '%$produit%'");   
+                                <?php
+                                foreach($Liste as $commandeC){
+                                ?>
+                                <tr>
+                                    <th scope="row"><b><?php echo $commandeC['idCom'] ?></b></th>
+                                    
+                                    <td><b><?php echo $commandeC['nom']?></b></td>
+                                    <td><b><?php echo $commandeC['telephone']?></b></td>
+                                    <td><b><?php echo $commandeC['adresse']?></b></td>
+                                    <td><b><?php echo $commandeC['prix']?></b></td>
+                                    <td><b><a href="deletecommande.php?idCom=<?php echo $commandeC['idCom'] ?>">Supprimer</a></b></td>
+                                    <td><b><a href="updatecommande.php?idCom=<?php echo $commandeC['idCom'] ?>">Modifier</a></b></td>
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                        </table>
 
-                                            }
-                                          while($ligne=$rep->fetch()){
-                                          ?>
-                                                  <tr>
-                                                  
-                                                      
-                                                      
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["dispo"];?></td>
-                                                      <td><?php echo $ligne["nbrarticle"];?></td>
-                                                  
-                                                      <td><?php echo $ligne["datearr"];?></td>
-                                                      <td><?php echo $ligne["produit"];?></td>
+                        <form method="GET">
+                <input type="search" name="s" placeholder="rechercher un nom" >
+                 <input class="btn btn-primary btn-block text-uppercase" type="submit" name="envoyer" >
+                 </form>
+                  <section > 
+                    <?PHP if($Liste->rowCount()>0)
+                   { while($commandeC =$Liste ->fetch()) {
+                      ?> 
+                      <?PHP 
+                    }}else { 
+                      ?>
+                       <p>aucune nom trouvé </p> <?PHP } ?> 
+                      </section>
+    
 
-
-                                                    
-                                                     
-                                                      <td> <a href="deletestock.php?rep=<?php echo $ligne['produit'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="updatestock.php?id=<?=$ligne["produit"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
-
-                                                                                    
-                                                     
-                                          
-                                                     
-                                                  </tr>
-                                          
-                                                 
-                                          <?php
-                                          }
-                                          ?>
-                                           
-
-                                        </tr>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-       < <div>
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="ajoutstock.php">Ajouter</a>
-            </button>
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="tristock.php">Tri</a>
-            </button>
-          </div>
-
+            </div>
+        </div>
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">

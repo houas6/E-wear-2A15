@@ -26,7 +26,18 @@
 				echo 'Erreur: '.$e->getMessage();
 			}			
 		}
-		
+		function afficherstocktri1(){
+			
+			$sql="SELECT * FROM stock ORDER BY produit";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
 		
 		
 		function afficherStock(){

@@ -181,7 +181,12 @@
             <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
                 <a href="ajoutcommande.php">Ajouter commande</a>
             </button>
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
+                <a href="trinom.php">Tri</a>
+            </button>
           </div>
+         
+        
 
         <div class="content mt-3">
             <div class="animated fadeIn">

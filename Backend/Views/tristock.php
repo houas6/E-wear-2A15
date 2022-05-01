@@ -1,3 +1,17 @@
+<?php
+    include "../Controller/stockC.php";
+    $stockC=new stockC();
+    $Liste=$stockC->afficherstocktri1();
+    $bdd=new PDO('mysql:host=localhost;dbname=projet', 'root', '',);
+$Liste = $bdd->query('SELECT * FROM stock ORDER BY produit');
+if (isset ($_GET['r']) AND !empty($_GET['r'])){
+    $recherche =	htmlspecialchars($_GET['r']);
+  $Liste = $bdd->query('SELECT * FROM stock WHERE produit  LIKE "%' .$recherche .'%" '  ); 
+  
+}
+?>
+
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -100,86 +114,53 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Stock</strong>    
+                                <strong class="card-title">STOCK</strong>    
                             </div>
                             <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID PRODUIT</th>
-                                            <th>Disponibilité</th>
-                                            <th>Nombre article</th>
-                                            <th>date arrivage</th>
+                                            <th>Id produit</th>
+                                            <th>Disponibilite</th>
+                                            <th>nombre artcile</th>
+                                            <th>Date arrivage</th>
                                             
                                            <!-- <th> savoir plus </th>-->
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <?php
-                                            $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
-                                            //creation un variable chaine de caractere contenant la requete sql 
-                                            $req ="select * from stock";
-                                          //execution de la requete avec la methode query la reponse sera mise dans $rep
-                                            $rep= $con->query($req);
-                                             if(isset($_POST["search"])) {
-                                                $dispo = $_POST["search-area"];
-                                                $rep = $con->query("select * from stock where produit like '%$produit%'");   
+                                <?php
+                                foreach($Liste as $stockC){
+                                ?>
+                                <tr>
+                                                    <td><?php echo $stockC["dispo"];?></td>
+                                                    <td><?php echo $stockC["nbrarticle"];?></td>
+                                                    <td><?php echo $stockC["datearr"];?></td>
+                                                    <td><?php echo $stockC["produit"];?></td>
+                                    <td><b><a href="deletestock.php?produit=<?php echo $stockC['produit'] ?>">Supprimer</a></b></td>
+                                    <td><b><a href="updatestock.php?produit=<?php echo $stockC['produit'] ?>">Modifier</a></b></td>
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                        </table>
 
-                                            }
-                                          while($ligne=$rep->fetch()){
-                                          ?>
-                                                  <tr>
-                                                  
-                                                      
-                                                      
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["dispo"];?></td>
-                                                      <td><?php echo $ligne["nbrarticle"];?></td>
-                                                  
-                                                      <td><?php echo $ligne["datearr"];?></td>
-                                                      <td><?php echo $ligne["produit"];?></td>
+                        <form method="GET">
+                <input type="search" name="r" placeholder="rechercher un produit" >
+                 <input class="btn btn-primary btn-block text-uppercase" type="submit" name="envoyer" >
+                 </form>
+                  <section > 
+                    <?PHP if($Liste->rowCount()>0)
+                   { while($stockC =$Liste ->fetch()) {
+                      ?> 
+                      <?PHP 
+                    }}else { 
+                      ?>
+                       <p>aucun produit trouvé </p> <?PHP } ?> 
+                      </section>
+    
 
-
-                                                    
-                                                     
-                                                      <td> <a href="deletestock.php?rep=<?php echo $ligne['produit'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="updatestock.php?id=<?=$ligne["produit"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
-
-                                                                                    
-                                                     
-                                          
-                                                     
-                                                  </tr>
-                                          
-                                                 
-                                          <?php
-                                          }
-                                          ?>
-                                           
-
-                                        </tr>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-       < <div>
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="ajoutstock.php">Ajouter</a>
-            </button>
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="tristock.php">Tri</a>
-            </button>
-          </div>
-
+            </div>
+        </div>
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">

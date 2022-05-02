@@ -47,9 +47,64 @@ if (error) {
   e.preventDefault();
 } 
 
+e.preventDefault();
+
 
 }
 
+function gameVerify(e) {
+  e.preventDefault();
+  
+  let error = "";
+
+  // description
+  const description = document.getElementById("description").value;
+  // should be at least 10 characters
+  if (description.length < 10) {
+    error += "* Description must be at least 10 characters long.\n";
+  }
+  // should be at most 100 characters
+  if (description.length > 100) {
+    error += "* Description must be at most 100 characters long.\n";
+  }
+
+  // code
+  const code = document.getElementById("code").value;
+  // should not be empty
+  if (code == "") {
+    error += "* code must not be empty.\n";
+  }
+
+   // email
+   const email = document.getElementById("email").value;
+   // should not be empty
+   if (email == "") {
+     error += "* email must not be empty.\n";
+   }
+
+  const errorContainer = document.getElementById("error");
+  errorContainer.innerText = error;
+
+
+  console.log(error)
+
+if (error) {
+  e.preventDefault();
+} 
+
+e.preventDefault();
+
+
+}
+
+
+
 const form = document.getElementById('create')
-console.log(form)
-form.addEventListener('submit', verify)
+if  (form) form.addEventListener('submit', verify)
+
+
+const gameform = document.getElementById('gamecreate')
+if  (gameform) {
+  gameform.addEventListener('submit', gamecreate)
+  console.log('here')
+}

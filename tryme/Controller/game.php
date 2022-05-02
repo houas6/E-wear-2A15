@@ -3,7 +3,7 @@
 class GameController {
 
     function addgame($game) {
-        $sql = "INSERT INTO game (ID, Description, code, email) VALUES ('".$game->getid()."', '".$game->getdescription()."', '".$game->getcode()."', '".$game->getemail()."');";
+        $sql = "INSERT INTO game (Description, code, email) VALUES ('".$game->getdescription()."', '".$game->getcode()."', '".$game->getemail()."');";
 
 
         $db = config::getConnexion();
@@ -31,25 +31,10 @@ class GameController {
         }
     }
 
-    function getgame() {
+ 
+
+    function getGames() {
         $sql = "SELECT * FROM game";
-
-
-        $db = config::getConnexion();
-        try{
-            
-            
-        $result=$db->query($sql);
-
-        return $result;
-        }
-        catch (Exception $e){
-            echo 'Erreur: '.$e->getMessage();
-        }
-    }
-
-    function getOffersSorted($by) {
-        $sql = "SELECT * FROM game order by ".$by." desc";
 
 
         $db = config::getConnexion();
@@ -81,9 +66,9 @@ class GameController {
         }
     }
 
-}
+
     function updateOffer($game) {
-        $sql = "UPDATE game SET ID = '".$game->getid()."', Description = '".$game->descrption()."', code = '".$game->getcode()."', email = '".$game->getemail()."' WHERE ID = ".$->getId();
+        $sql = "UPDATE game SET ID = '".$game->getid()."', Description = '".$game->descrption()."', code = '".$game->getcode()."', email = '".$game->getemail()."' WHERE ID = ".$game->getId();
 
         $db = config::getConnexion();
         try{

@@ -14,12 +14,14 @@ if (
         if ($_POST['action'] == 'delete'){
 
             $id  = $_POST['id'];
-            $controller = new gameController();
+            $controller = new GameController();
             $controller->deletegame($id);
         }
     }
-            $controller = new gameController();
+            $controller = new GameController();
 
+
+            
 if (
     isset($_POST['by']) && isset($_POST['action']) && ($_POST['action'] == 'sort')
     ) {
@@ -28,9 +30,24 @@ if (
             $result = $controller->getOffersSorted($by);
         }
 else {
-  $result = $controller->getOffers();
+  $result = $controller->getGames();
 }
 
+$data =   [];
+    while($ligne=$result->fetch()){
+      array_push($data, $ligne);
+    }
+
+
+
+
+if (
+  isset($_POST['action']) && ($_POST['action'] == 'pick')
+  ) {
+
+    
+    $winner =  $data[rand(0, count($data)-1)];  
+      }
 
 
 
@@ -63,6 +80,24 @@ else {
   </head>
   <body>
 
+  
+  <div class="grid grid-cols-2 h-screen items-center">
+      <div class="h-full bg-[#e7f1f4]">
+        <img src="E-wear.png" class="h-full object-contain" />
+      </div>
+
+  
+      <div>
+
+      <div class="p-10">
+        <h1 class="font-bold text-3xl w-full p-4 bg-sky-200 text-sky-500 border-4 border-sky-500 rounded-md">
+          <?php
+            if  (isset($winner))  {
+              echo  "and the winner is ".$winner['email'];
+            }
+          ?>
+        </h1>
+      </div>
 
   
 <table class="table-auto  w-full  text-center">
@@ -88,7 +123,7 @@ else {
         <form method="post">
       <input type="hidden" value="sort" name="action" />
       <input type="hidden" value="code" name="by" />
-      <button>pourcentage</button>
+      <button>code</button>
     </form>
     </th>
 
@@ -96,7 +131,7 @@ else {
         <form method="post">
       <input type="hidden" value="sort" name="action" />
       <input type="hidden" value="email" name="by" />
-      <button>date debut</button>
+      <button>email</button>
     </form>
     </th>
 
@@ -112,11 +147,12 @@ else {
   <?php
 
   
-while($ligne=$result->fetch()){
+foreach ($data as &$ligne){
+
     echo "
     <tr>
     <td>".$ligne["ID"]."</td>
-    <td>".$ligne["description"]."</td>
+    <td>".$ligne["Description"]."</td>
     <td>".$ligne["code"]."</td>
     <td>".$ligne["email"]."</td>
 
@@ -138,6 +174,39 @@ while($ligne=$result->fetch()){
 
   </tbody>
 </table>
+
+
+<div>
+<form  method="post"  class="flex  p-1">
+      <input type="hidden" value="pick" name="action" />
+        <button class="py-1 px-3 ml-auto bg-green-500  text-white rounded-md  ">
+          winner
+        </button>
+      </form>
+</div>
+
+
+</div>
+
+</div>
+<div class="py-10">
+      <h1 class="text-5xl font-medium text-center py-10 fancy">Gallery</h1>
+
+      <div class="grid grid-cols-3 gap-10 px-40">
+        <img class="grayscale object-cover h-full" src="1.jpg" alt="" />
+        <img class="grayscale object-cover h-full" src="2.jpg" alt="" />
+        <img class="grayscale object-cover h-full" src="3.avif" alt="" />
+        <img class="grayscale object-cover h-full" src="4.webp" alt="" />
+
+        <img class="grayscale object-cover h-full" src="5.webp" alt="" />
+        <img class="grayscale object-cover h-full" src="6.jpg" alt="" />
+      </div>
+    </div>
+
+    <footer
+      class="bg-black text-white text-lg font-serif text-center py-3"
+    ></footer>
+    <script src="main.js"></script>
 
 </body>
 </html>

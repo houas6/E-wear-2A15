@@ -3,9 +3,7 @@
     include_once '../../Model/game.php';
     include_once '../../Controller/game.php';
 
-if (
-    !isset($_POST['id'])
-    || !isset($_POST['description'])
+if (!isset($_POST['description'])
     || !isset($_POST['code'])
     || !isset($_POST['email'])
     ) {
@@ -13,17 +11,16 @@ if (
 
       
       $game = new game();
-      $game->setId($_POST['id']);
       $game->setDescription($_POST['description']);
       $game->setcode($_POST['code']);
       $game->setemail($_POST['email']);
       
       
-      $controller = new gameController();
+      $controller = new GameController();
       
       $controller->addgame($game);
       
-    }
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -54,26 +51,17 @@ if (
         <img src="E-wear.png" class="h-full object-contain" />
       </div>
 
-      <form method="post"  action="<?=$_SERVER['PHP_SELF']?>" id="create">
+      <form method="post"  action="<?=$_SERVER['PHP_SELF']?>" id="gamecreate">
         <h1 class="text-center text-[#cd5c5c] text-5xl fancy">Our game  </h1>
 
         <div class="grid max-w-lg mx-auto gap-4 text-black py-4">
-          <div class="grid">
-            <label for="description" class="text-gray-800"> ID </label>
-            <input
-              type="text"
-              id="description"
-              name="description"
-              class="resize-none rounded border border-gray-800 p-1 "
-            >
-          </div>
 
           <div class="grid gap-1">
             <label for="pourcentage" class="text-gray-800"> descrption </label>
             <input
               type="text"
-              name="desc"
-              id="desc"
+              name="description"
+              id="description"
               class="rounded border border-gray-800 p-1"
             />
           </div>
@@ -81,7 +69,7 @@ if (
           <div class="grid gap-1">
             <label for="startDate" class="text-gray-800"> code </label>
             <input
-              type="number"
+              type="text"
               id="code"
               name="code"
               class="rounded border border-gray-800 p-1"
@@ -89,7 +77,7 @@ if (
           </div>
 
           <div class="grid gap-1">
-            <label for="endDate" class="text-gray-800"> Email</label>
+            <label for="email" class="text-gray-800"> Email</label>
             <input
               type="text"
               id="email"

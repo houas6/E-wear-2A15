@@ -5,8 +5,6 @@
     include_once '../../Controller/Offer.php';
 
 
-
-
 if (
     isset($_POST['id'])  &&  isset($_POST['action'])
     ) {
@@ -30,9 +28,6 @@ if (
 else {
   $result = $controller->getOffers();
 }
-
-
-
 
 
 ?>
@@ -63,10 +58,18 @@ else {
   </head>
   <body>
 
+  <div class="grid grid-cols-2 h-screen items-center">
+      <div class="h-full bg-[#e7f1f4]">
+        <img src="E-wear.png" class="h-full object-contain" />
+      </div>
 
   
+      <div>
+
+
 <table class="table-auto  w-full  text-center">
-  <thead>
+
+  <thead class="bg-red-300">
     <tr>
       <th>
         <form method="post">
@@ -145,6 +148,36 @@ while($ligne=$result->fetch()){
   </tbody>
 </table>
 
+
+<form  method="post"  class="flex  p-1">
+      <input type="hidden" value="sort" name="action" />
+      <input type="hidden" value="pourcentage" name="tri" />
+        <button class="py-1 px-3 ml-auto bg-green-500  text-white rounded-md  ">
+          trier
+        </button>
+      </form>
+</div>
+
+</div>
+<div class="py-10">
+      <h1 class="text-5xl font-medium text-center py-10 fancy">Gallery</h1>
+
+      <div class="grid grid-cols-3 gap-10 px-40">
+        <img class="grayscale object-cover h-full" src="1.jpg" alt="" />
+        <img class="grayscale object-cover h-full" src="2.jpg" alt="" />
+        <img class="grayscale object-cover h-full" src="3.avif" alt="" />
+        <img class="grayscale object-cover h-full" src="4.webp" alt="" />
+
+        <img class="grayscale object-cover h-full" src="5.webp" alt="" />
+        <img class="grayscale object-cover h-full" src="6.jpg" alt="" />
+      </div>
+    </div>
+
+    <footer
+      class="bg-black text-white text-lg font-serif text-center py-3"
+    ></footer>
+    <script src="main.js"></script>
+    
+
 </body>
 </html>
-

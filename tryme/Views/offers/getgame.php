@@ -89,15 +89,22 @@ if (
   
       <div>
 
-      <div class="p-10">
-        <h1 class="font-bold text-3xl w-full p-4 bg-sky-200 text-sky-500 border-4 border-sky-500 rounded-md">
+      
           <?php
             if  (isset($winner))  {
-              echo  "and the winner is ".$winner['email'];
+              echo  "<div class='p-10'>
+              <h1 class='font-bold text-3xl w-full p-4 bg-indigo-200 text-indigo-500 border-4 border-indigo-500 rounded-md'>and the winner is ".$winner['email']."</h1>
+              </div>";
             }
           ?>
-        </h1>
-      </div>
+        
+
+      
+        
+      <div class="w-full text-center pt-10">
+
+<a  href="creategame.php"  class="text-blue-400" target="_blank">Create Game</a>
+</div>
 
   
 <table class="table-auto  w-full  text-center">

@@ -57,6 +57,14 @@ if (
       <form method="post"  action="<?=$_SERVER['PHP_SELF']?>" id="create">
         <h1 class="text-center text-[#cd5c5c] text-5xl fancy">Nos offres</h1>
 
+        
+        <div class="w-full text-center pt-10">
+
+          <a  href="getOffers.php"  class="text-blue-400" target="_blank">Offers list</a>
+        </div>
+
+
+
         <div class="grid max-w-lg mx-auto gap-4 text-black py-4">
           <div class="grid">
             <label for="description" class="text-gray-800"> Description </label>
@@ -99,12 +107,18 @@ if (
           </div>
           <div id="error" class="text-red-500"></div>
 
-          <div class="flex items-center justify-between mt-10">
-            <button
+          <div class="flex items-center justify-end mt-10 gap-x-4">
+          <button
+              type="reset"
+              class="border border-red-500 text-red-500 duration-200 py-2 px-3 rounded"
+            >
+              Cancel
+            </button>  
+          <button
               type="submit"
               class="text-white bg-red-500 hover:bg-red-400 duration-200 py-2 px-3 rounded"
             >
-              Envoyer
+              Create
             </button>
           </div>
         </div>

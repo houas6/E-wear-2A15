@@ -67,6 +67,13 @@ else {
       <div>
 
 
+      <div class="w-full text-center pt-10">
+
+<a  href="createOffer.php"  class="text-blue-400" target="_blank">Create Offer</a>
+</div>
+
+
+
 <table class="table-auto  w-full  text-center">
 
   <thead class="bg-red-300">
@@ -149,6 +156,7 @@ while($ligne=$result->fetch()){
 </table>
 
 
+
 <form  method="post"  class="flex  p-1">
       <input type="hidden" value="sort" name="action" />
       <input type="hidden" value="pourcentage" name="tri" />
@@ -178,6 +186,5 @@ while($ligne=$result->fetch()){
     ></footer>
     <script src="main.js"></script>
     
-
 </body>
 </html>

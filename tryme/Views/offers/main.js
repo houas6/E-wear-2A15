@@ -52,8 +52,9 @@ e.preventDefault();
 
 }
 
+console.log("FUCK")
+
 function gameVerify(e) {
-  e.preventDefault();
   
   let error = "";
 
@@ -92,7 +93,6 @@ if (error) {
   e.preventDefault();
 } 
 
-e.preventDefault();
 
 
 }
@@ -105,6 +105,6 @@ if  (form) form.addEventListener('submit', verify)
 
 const gameform = document.getElementById('gamecreate')
 if  (gameform) {
-  gameform.addEventListener('submit', gamecreate)
+  gameform.addEventListener('submit', gameVerify)
   console.log('here')
 }

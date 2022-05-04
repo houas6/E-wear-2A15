@@ -302,7 +302,7 @@ method="post">
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" href="contact.php" value="Envoyer"> 
+                        <input type="submit" href="contact.php" value="Envoyer" > 
                     </td>
                     <td>
                         <input type="reset" value="Annuler" >

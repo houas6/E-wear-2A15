@@ -33,17 +33,7 @@ class reclamationC {
             die('Erreur:'. $e->getMeesage());
         }
     }
-    function chercherrec($idRec){
-        $sql="SELECT * FROM recc where nomR=:$nomR";
-        $db = config::getConnexion();
-        try{
-            $liste = $db->query($sql);
-            return $liste;
-        }
-        catch(Exception $e){
-            die('Erreur:'. $e->getMeesage());
-        }
-    }
+    
     function UpdateReclamation($reclamation,$idRec){
         try {
             $db = config::getConnexion();
@@ -65,6 +55,17 @@ class reclamationC {
             echo $query->rowCount() . " records UPDATED successfully <br>";
         } catch (PDOException $e) {
             $e->getMessage();
+        }
+    }
+    function affichertri(){
+        $sql="SELECT * FROM recc order by nomR";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('Erreur:'. $e->getMessage());
         }
     }
     function deleteRec($idRec){
@@ -93,24 +94,5 @@ class reclamationC {
             die('Erreur: '.$e->getMessage());
         }
     }
-
-    function tri($by) {
-        $sql = "SELECT * FROM recc order by ".$by." desc";
-
-
-        $db = config::getConnexion();
-        try{
-
-
-        $result=$db->query($sql);
-
-        return $result;
-        }
-        catch (Exception $e){
-            echo 'Erreur: '.$e->getMessage();
-        }
-    }
 }
-
-
 ?>

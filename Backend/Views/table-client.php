@@ -1,3 +1,13 @@
+<?php
+    include "../Controller/reclamationC.php";
+    $reclamationC=new reclamationC();
+    $bdd=new PDO('mysql:host=localhost;dbname=projet', 'root', '',);
+if (isset ($_GET['s']) AND !empty($_GET['s'])){
+    $recherche =	htmlspecialchars($_GET['s']);
+  $Liste = $bdd->query('SELECT * FROM recc WHERE nomR  LIKE "%' .$recherche .'%" '  ); 
+  
+}
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -99,22 +109,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">CLIENT</strong>    
-                            </div>
-                            <form action="recherche.php" method="post">
-                            <tr>
-                            <td>
-                        <label for="rech">recherche Nom de client:
-                        </label>
-                    </td>
-                    <td>
-                      <input type="text" name="rech" id="rech" maxlength="20" style="color: black;">
-                    </td>
-                    <td><button type="button" class="btn btn-outline-danger">recherche</button></a></td>
-                       
-                </tr> 
-                </form>
-                            <div class="card-body"> <table  class="table table-striped table-bordered">
+                        </div>
+
+ <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
+                                    <a href="affichertri.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">tri et recherche nom </a>
                                         <tr>
                                             <th>Id reclamation</th>
                                             <th>Nom</th>
@@ -165,15 +165,15 @@
                                           
                                                      
                                                   </tr>
-
+                                                  
 
                                           <?php
                                           }
                                           ?>
                                            
-
+                                          
                                         </tr>
-                                       
+
                                     </tbody>
                                     
                                 </table>

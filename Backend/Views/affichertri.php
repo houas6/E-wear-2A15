@@ -1,10 +1,12 @@
 <?php
-    include "../Controller/message.php";
-    $messageController=new messageController();
+      include_once '../controller/reclamationC.php';
+    $reclamationC=new reclamationC();
+    $Liste=$reclamationC->affichertri();
     $bdd=new PDO('mysql:host=localhost;dbname=projet', 'root', '',);
+$Liste = $bdd->query('SELECT * FROM recc ORDER BY nomR');
 if (isset ($_GET['s']) AND !empty($_GET['s'])){
     $recherche =	htmlspecialchars($_GET['s']);
-  $Liste = $bdd->query('SELECT * FROM messa WHERE nomRe  LIKE "%' .$recherche .'%" '  ); 
+  $Liste = $bdd->query('SELECT * FROM recc WHERE nomR  LIKE "%' .$recherche .'%" '  ); 
   
 }
 ?>
@@ -93,7 +95,7 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">Espace message</a></li>
+                            <li><a href="#">Espace reclamation</a></li>
                             <li><a href="#">Table</a></li>
                             <li class="active"> table de donée  </li>
                         </ol>
@@ -108,68 +110,74 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">message</strong>    
-                            </div>
-                            <div class="card-body"> <table  class="table table-striped table-bordered">
+                                <strong class="card-title">CLIENT</strong>    
+                        </div>
+
+ <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
-                                    <a href="affichertriM.php"
-              class="btn btn-primary btn-block text-uppercase mb-3">tri et recherche nom </a>
-                                        <tr>
-                                            <th>Id de message</th>
-                                            <th>Nom</th>
-                                            <th>Mail</th>
-                                            <th>sujet</th>
-                                            <th>message</th>
-                                           <!-- <th> savoir plus </th>-->
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php
-                                            $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
-                                            //creation un variable chaine de caractere contenant la requete sql 
-                                            $req ="select * from messa";
-                                          //execution de la requete avec la methode query la reponse sera mise dans $rep
-                                            $rep= $con->query($req);
-                                             if(isset($_POST["search"])) {
-                                                $nomRe = $_POST["search-area"];
-                                                $rep = $con->query("select * from messa where nomRe like '%$nomRe%'");   
-
-                                            }
-                                          while($ligne=$rep->fetch()){
-                                          ?>
-                                                  <tr>
+                                    <h2 class="tm-block-title">Orders List</h2>
+                        <table class="table">
+                        
+                       <a href="affichertri.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">tri nom</a>
+              <a
+              href="table-client.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">sans tri</a>
+              
+                            <thead>
+                                <tr>
+                                    
+                                    
+                                    <th scope="col">idReclamation</th>
+                                    <th scope="col">nom</th>
+                                    <th scope="col">prenom</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">reclamation</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach($Liste as $reclamationC){
+                                ?>
+                                <tr>
+                                    <th scope="row"><b><?php echo $reclamationC['idRec'] ?></b></th>
+                                    
+                                    <td><b><?php echo $reclamationC['idRec']?></b></td>
+                                    <td><b><?php echo $reclamationC['nomR']?></b></td>
+                                    <td><b><?php echo $reclamationC['prenomR']?></b></td>
+                                    <td><b><?php echo $reclamationC['mail']?></b></td>
+                                    <td><b><?php echo $reclamationC['rec']?></b></td>
+                                    <td><a href="deleterec.php?rep=<?php echo $reclamationC['idRec'] ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+                                    <td><a href="updatee.php?idRec=<?php echo $reclamationC['idRec'] ?>"><button type="button" class="btn btn-outline-danger">Modifier</button></a></td>
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                        </table>
+                        <form method="GET">
+                <input type="search" name="s" placeholder="rechercher un nom" >
+                 <input class="btn btn-primary btn-block text-uppercase" type="submit" name="envoyer" >
+                 </form>
+                  <section > 
+                    <?PHP if($Liste->rowCount()>0)
+                   { while($reclamationC =$Liste ->fetch()) {
+                      ?> 
+                      <?PHP 
+                    }}else { 
+                      ?>
+                       <p>aucune nom trouvé </p> <?PHP } ?> 
+                      </section>
                                                   
-                                          
-                                                      <td><?php echo $ligne["idMes"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["nomRe"];?></td>
-                                                      <td><?php echo $ligne["maile"];?></td>
-                                                      <td><?php echo $ligne["sujetRe"];?></td>
-                                                  
-                                                      <td><?php echo $ligne["messageRe"];?></td>
 
-                                                      <td> <a href="deletemess.php?rep=<?php echo $ligne['idMes'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="updatemess.php?id=<?=$ligne["idMes"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
-
-                                                                                    
-                                                     
-                                          
-                                                     
-                                                  </tr>
-                                          
-                                          
-                                          <?php
-                                          }
-                                          ?>
+                                         
                                            
 
                                         </tr>
                                        
                                     </tbody>
+                                    
                                 </table>
+                
                             </div>
                         </div>
                     </div>
@@ -252,4 +260,6 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
 </body>
 
 </html>
+
+
 

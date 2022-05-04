@@ -45,7 +45,17 @@ class messageController {
             die('Erreur:'. $e->getMessage());
         }
     }
-
+    function affichertriM(){
+        $sql="SELECT * FROM messa order by nomRe";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('Erreur:'. $e->getMessage());
+        }
+    }
 
 }
 

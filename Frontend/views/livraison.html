@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="livraison.css">
+<title>Livraison</title>
+<style>
+ .error{
+ color: rgb(12, 4, 4);
+}
+</style>
+<script type="text/javascript" src="livraison.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">E-wear</a>
+        <nav class="navigation">
+            <a href="#services">acceuil</a>
+            <a href="#projects">a propos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+<center><h1></h1></center>
+<br>
+<br>
+<br>
+<br>
+    <section>
+<fieldset>
+<center> <font size="6" class="error">Gestion de livraison:</font> <br><br></center>
+
+<form action="ajoutliv.php" method="post">  
+<center>adresse: <input type="text" name="adresse" text-align="center"required > <br></center>
+<center><p id="errorcm" class="error" text-align="center" ></p></center>
+<center>Nom: <input type="text" name="nom"required  ><br></center>
+<center> <p id="errorNR" class="error"></p></center>
+<center>Prenom: <input type="text" name="prenom" required> <br></center>
+<center><p id="errorPR" class="error"></p></center>
+<center>Num telephone: <input type="tel" name="tel" pattern="[0-9]{8}" required> <small>8 chiffres</small> <br></center>
+<center><p id="errortl" class="error"></p></center>
+<center>E-Mail : <input type="email" name="mail"><br></center>
+<center><p id="errorMR" class="error"></p></center>
+<center>Frais livraison:  <input type="number" name="frais" pattern="[0-9]{1}" required> <small>DT</small> <br></center> 
+<center><p id="errorPR" class="error"></p></center>
+<center>
+        <input  class="main-btn" value="Ajouter" type="submit">   
+        <input type="reset" class="main-btn" value="Effacer">
+</center> 
+</form>
+</fieldset>
+
+</section>
+ 
+
+
+</body>
+</html>

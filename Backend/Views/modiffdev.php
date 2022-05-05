@@ -1,0 +1,264 @@
+<?php
+include '../controller/livraisonC.php';
+require_once '../model/livraison.php';
+$livraisonC = new livraisonC();
+if (isset($_GET['id'])) {
+  $livToEdit = $livraisonC->getlivraisonbyID($_GET['id']);
+}
+$listeliv = $livraisonC->afficherlivraison();
+
+  
+ 
+     
+          
+          
+          
+           if (isset($_REQUEST['edit'])) {
+            $livraisonC = new livraisonC();
+          $livraison = new livraison($_POST['id'],$_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['mail'],$_POST['frais'],$_POST['tel']);
+          $livraisonC->modifierlivraison($livraison);
+          
+          header('Location:afficherlivraison.php');
+          }
+         // header('Location:blank.php');
+       else {
+          echo 'error';
+          //header('Location:blank.php');
+      }
+  
+
+
+?>
+
+?>
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<script type="text/javascript" src="livraison.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin </title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+
+<body>
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i> Espace Admin </a>
+                    </li>
+                    <h3 class="menu-title"> Éléments IU</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
+                            <li><i class="fa fa-table"></i><a href="table-client.html">Client</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-user.php">User</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-panier.php">Panier</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>
+                        </ul>
+                    </li>
+
+
+                    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
+                    <li>
+                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Graphiques</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-area-chart"></i><a href="Gra_produit.html"> GraphiqueProduit</a></li>
+
+                        </ul>
+                    </li>
+
+                    <h3 class="menu-title">Suppléments</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">S'identifier</a></li>
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">S'inscrire</a></li>
+                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Mot De Passe Oublier</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+
+                </div>
+
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Espace Admin</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Espace Admin</a></li>
+                            <li><a href="#">Table</a></li>
+                            <li class="active"> table de donnée </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+
+
+                <div class="row" style=" justify-content: center;">
+                    <div class="col-lg-6" >
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Livraison</strong>
+                            </div>
+                            <div class="card-body" >
+                                <!-- Credit Card -->
+                                <div id="pay-invoice">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h3 class="text-center">Modifier Livraison </h3>
+                                        </div>
+                                        <hr>
+                                        <fo
+                                        rm action="" method="POST">
+                                        <?php if (isset($livToEdit)) {?>
+                                            <input type="hidden" name="id" value=" <?php echo $livToEdit['id'] ?>">
+                                            <?php  }
+                    ?>
+                                            <div class="form-group">
+                                                <label >Adresse</label>
+                                                <input type="text" name="adresse" text-align="center"required name="<?php if (isset($livToEdit)) echo $livToEdit['adresse']  ?>" class="form-control"  >
+                                                <p id="errorcm" class="error" text-align="center" ></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label> nom </label>
+                                                <input type="text" name="nom"required name="<?php if (isset($livToEdit)) echo $livToEdit['nom']  ?>" class="form-control" >
+                                                <p id="errorNR" class="error"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label >prenom</label>
+                                                <input type="text" name="prenom" required name="<?php if (isset($livToEdit)) echo $livToEdit['prenom']  ?>" class="form-control" >
+                                                <p id="errorPR" class="error"></p>
+                                                </div>
+                                                <div class="form-group">
+                                                <label >Num Tel</label>
+                                                <input type= "number" name="tel" pattern="[0-9]{8}" required name="<?php if (isset($livToEdit)) echo $livToEdit['tel']  ?>" class="form-control" >
+                                                <p id="errortl" class="error"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label >E-mail</label>
+                                                <input type="email" name="mail" name="<?php if (isset($livToEdit)) echo $livToEdit['mail']  ?>" class="form-control" >
+                                                <p id="errorMR" class="error"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label >Frais</label>
+                                                <input type="number" name="frais" pattern="[0-9]{1}" required name="<?php if (isset($livToEdit)) echo $livToEdit['frais']  ?>"  class="form-control" >
+                                                <p id="errorPR" class="error"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label >ID Livreur</label>
+                                                <input type="number" name="id_livreur"  required name="<?php if (isset($livToEdit)) echo $livToEdit['id_livreur']  ?>"  class="form-control" >
+                                                <p id="errorPR" class="error"></p>
+                                            </div>
+                                           
+                                            
+
+
+                                                <div>
+                                                    <button type="submit"  name="edit" class="btn btn-lg btn-info btn-block">
+
+                                                        <span >modifier </span>
+
+                                                    </button>
+                                                </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> <!-- .card -->
+
+                    </div>
+                    <!--/.col-->
+
+
+
+
+                            <script src="vendors/jquery/dist/jquery.min.js"></script>
+                            <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+
+                            <script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+                            <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+                            <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+                            <script src="assets/js/main.js"></script>
+</body>
+</html>
+                                        

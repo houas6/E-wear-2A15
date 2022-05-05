@@ -119,10 +119,10 @@ if (isset ($_GET['r']) AND !empty($_GET['r'])){
                             <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Id produit</th>
                                             <th>Disponibilite</th>
                                             <th>nombre artcile</th>
                                             <th>Date arrivage</th>
+                                            <th>ID produit</th>
                                             
                                            <!-- <th> savoir plus </th>-->
 

@@ -97,7 +97,7 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Espace reclamation</a></li>
                             <li><a href="#">Table</a></li>
-                            <li class="active"> table de donée  </li>
+                            <li class="active"> table of informations  </li>
                         </ol>
                     </div>
                 </div>
@@ -116,21 +116,22 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
  <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                     <h2 class="tm-block-title">Orders List</h2>
+                                    <td><a href="affichertri.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">sort name</a></td>
+              <td><a
+              href="table-client.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">without sort</a></td>
                         <table class="table">
                         
-                       <a href="affichertri.php"
-              class="btn btn-primary btn-block text-uppercase mb-3">tri nom</a>
-              <a
-              href="table-client.php"
-              class="btn btn-primary btn-block text-uppercase mb-3">sans tri</a>
+                     
               
                             <thead>
                                 <tr>
                                     
                                     
                                     <th scope="col">idReclamation</th>
-                                    <th scope="col">nom</th>
-                                    <th scope="col">prenom</th>
+                                    <th scope="col">last name</th>
+                                    <th scope="col">first name</th>
                                     <th scope="col">email</th>
                                     <th scope="col">reclamation</th>
                                     
@@ -141,23 +142,25 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
                                 foreach($Liste as $reclamationC){
                                 ?>
                                 <tr>
-                                    <th scope="row"><b><?php echo $reclamationC['idRec'] ?></b></th>
+                                    
                                     
                                     <td><b><?php echo $reclamationC['idRec']?></b></td>
                                     <td><b><?php echo $reclamationC['nomR']?></b></td>
                                     <td><b><?php echo $reclamationC['prenomR']?></b></td>
                                     <td><b><?php echo $reclamationC['mail']?></b></td>
                                     <td><b><?php echo $reclamationC['rec']?></b></td>
-                                    <td><a href="deleterec.php?rep=<?php echo $reclamationC['idRec'] ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                    <td><a href="updatee.php?idRec=<?php echo $reclamationC['idRec'] ?>"><button type="button" class="btn btn-outline-danger">Modifier</button></a></td>
+                                    <td><a href="deleterec.php?rep=<?php echo $reclamationC['idRec'] ?>"><button type="button" class="btn btn-outline-danger">delete</button></a></td>
+                                    <td><a href="updatee.php?idRec=<?php echo $reclamationC['idRec'] ?>"><button type="button" class="btn btn-outline-danger">update</button></a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                         </table>
+                        <table>
                         <form method="GET">
-                <input type="search" name="s" placeholder="rechercher un nom" >
-                 <input class="btn btn-primary btn-block text-uppercase" type="submit" name="envoyer" >
+                <input type="search" name="s" placeholder="search with name" >
+                <td> <input class="btn btn-primary btn-block text-uppercase" type="submit" name="search" ></td>
                  </form>
+                                </table>
                   <section > 
                     <?PHP if($Liste->rowCount()>0)
                    { while($reclamationC =$Liste ->fetch()) {

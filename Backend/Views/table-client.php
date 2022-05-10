@@ -114,11 +114,11 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
  <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                     <a href="affichertri.php"
-              class="btn btn-primary btn-block text-uppercase mb-3">tri et recherche nom </a>
+              class="btn btn-primary btn-block text-uppercase mb-3">sort and search name </a>
                                         <tr>
                                             <th>Id reclamation</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
+                                            <th>Name</th>
+                                            <th>first name</th>
                                             <th>Mail</th>
                                             <th>reclamation</th>
                                            <!-- <th> savoir plus </th>-->
@@ -157,8 +157,8 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
                                                   
                                                       <td><?php echo $ligne["rec"];?></td>
 
-                                                      <td> <a href="deleterec.php?rep=<?php echo $ligne['idRec'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="updaterec.php?id=<?=$ligne["idRec"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
+                                                      <td> <a href="deleterec.php?rep=<?php echo $ligne['idRec'];?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+                                                      <td> <a href="updaterec.php?id=<?=$ligne["idRec"]?>"><button type="button" class="btn btn-outline-info">Update</button></a></td>
 
                                                                                     
                                                      

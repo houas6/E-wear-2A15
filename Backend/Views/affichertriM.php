@@ -116,22 +116,23 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
  <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                     <h2 class="tm-block-title">Message List</h2>
+                                   <td> <a href="affichertriM.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">sort name</a></td>
+             <td> <a
+              href="table-message.php"
+              class="btn btn-primary btn-block text-uppercase mb-3">without sort</a></td>
+              
                         <table class="table">
                         
-                       <a href="affichertriM.php"
-              class="btn btn-primary btn-block text-uppercase mb-3">tri nom</a>
-              <a
-              href="table-message.php"
-              class="btn btn-primary btn-block text-uppercase mb-3">sans tri</a>
-              
+                    
                             <thead>
                                 <tr>
                                     
                                     
-                                    <th scope="col">id de message</th>
-                                    <th scope="col">nom</th>
+                                    <th scope="col">id of message</th>
+                                    <th scope="col">name</th>
                                     <th scope="col">email</th>
-                                    <th scope="col">sujet</th>
+                                    <th scope="col">subject</th>
                                     <th scope="col">message</th>
                                     
                                 </tr>
@@ -148,16 +149,18 @@ if (isset ($_GET['s']) AND !empty($_GET['s'])){
                                     <td><b><?php echo $messageController['maile']?></b></td>
                                     <td><b><?php echo $messageController['sujetRe']?></b></td>
                                     <td><b><?php echo $messageController['messageRe']?></b></td>
-                                    <td><a href="deleteMess.php?rep=<?php echo $messageController['idMes'] ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                    <td><a href="updateeM.php?idMes=<?php echo $messageController['idMes'] ?>"><button type="button" class="btn btn-outline-danger">Modifier</button></a></td>
+                                    <td><a href="deleteMess.php?rep=<?php echo $messageController['idMes'] ?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+                                    <td><a href="updateeM.php?idMes=<?php echo $messageController['idMes'] ?>"><button type="button" class="btn btn-outline-danger">Update</button></a></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
                         </table>
+                        <table>
                         <form method="GET">
-                <input type="search" name="s" placeholder="rechercher un nom" >
-                 <input class="btn btn-primary btn-block text-uppercase" type="submit" name="envoyer" >
+                <input type="search" name="s" placeholder="search name" >
+                 <td><input class="btn btn-primary btn-block text-uppercase" type="submit" name="search" ></td>
                  </form>
+                                </table>
                   <section > 
                     <?PHP if($Liste->rowCount()>0)
                    { while($messageController =$Liste ->fetch()) {

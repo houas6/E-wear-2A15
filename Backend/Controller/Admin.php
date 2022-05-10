@@ -92,6 +92,18 @@
 				die('Erreur:'. $e->getMessage());
 			}
 		}
+		function afficheradmintri(){
+			
+			$sql="SELECT * FROM admine ORDER BY name ";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
 
 	}
 ?>

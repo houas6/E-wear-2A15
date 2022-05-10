@@ -1,5 +1,5 @@
 <?php
-	@session_start();
+	session_start();
 	include '../../config.php';
 	include_once '../../Model/User.php';
 	class UserController {
@@ -46,6 +46,7 @@
 				if ($stmt->rowCount() > 0) {
 					while($found_user = $stmt->fetch(PDO::FETCH_ASSOC)) {
 						if (!array_key_exists('email',$_SESSION)) {
+							session_start();
 							$_SESSION["ID"] = $found_user["ID"];
 							$_SESSION["name"] = $found_user["name"];
 							$_SESSION["email"] = $found_user["email"];

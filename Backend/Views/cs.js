@@ -1,34 +1,31 @@
 
 function verif() {
 
-    var name = document.forms["Form"]["name"].value;
-    var email = document.forms["Form"]["email"].value;
-    var password = document.forms["Form"]["pass"].value;
-    var adresse = document.forms["Form"]["adresse"].value;
-    var categorie = document.forms["Form"]["categorie"].value;
+    var name = document.forms["Formu"]["name"].value;
+    var email = document.forms["Formu"]["email"].value;
+    var password = document.forms["Formu"]["pass"].value;
+    var adresse = document.forms["Formu"]["adresse"].value;
     var errorN = document.getElementById('errorNR');
     var errorEmail = document.getElementById('errorMR');
     var errorPass = document.getElementById('errorPass');
     var erroradresse = document.getElementById('erroradresse');
-    var errorCat = document.getElementById('errorCat');
-    var er1 = 1;
-    var er2 = 1;
-    var er3 = 1;
-    var er4 = 1;
-    var er5 = 1;
+    var er1=1;
+    var er2=1;
+    var er3=1;
+    var er4=1;
     var letters = /^[A-Za-z]+$/;
     let admin = new RegExp('Admin');
     let livreur = new RegExp('livreur');
 
     if (name == "") {
         errorN.innerHTML = "Veuillez entrer votre nom!";
-
+        
     }
     else if (!(name.match(letters) && name.charAt(0).match(/^[A-Z]+$/))) {
         errorN.innerHTML = "Veuillez entrer un nom valid!";
     } else {
         errorN.innerHTML = "";
-        er1 = 0;
+        er1=0;
     }
 
     if (email == "") {
@@ -40,11 +37,11 @@ function verif() {
     }
     else {
         errorEmail.innerHTML = "";
-        er2 = 0;
+        er2=0;
     }
 
     if (password == "") {
-        errorPass.innerHTML = "Veuillez entrer jjjjjjvotre mot de passe!";
+        errorPass.innerHTML = "Veuillez eedrrrrrrrrrrntrer votre mot de passe!";
 
     }
     else if (!(password.match(/[0-9]/g) &&
@@ -56,7 +53,7 @@ function verif() {
     }
     else {
         errorPass.innerHTML = "";
-        er3 = 0;
+        er3=0;
     }
 
     if (adresse == "") {
@@ -68,34 +65,22 @@ function verif() {
     }
     else {
         erroradresse.innerHTML = "";
-        er4 = 0;
+        er4=0;
     }
 
-    if (categorie == "") {
-        errorCat.innerHTML = "Veuillez entrer votre categorie!";
-
-    }
-    else if ((!categorie.match("Livreur")) && (!categorie.match("Admin"))) {
-        errorCat.innerHTML = "Veuillez entrer une categorie qui est Admin ou Livreur";
-    }
-    else {
-        errorCat.innerHTML = "";
-        er5 = 0;
-    }
-
-
-    if (er1 == 1 || er2 == 1 || er3 == 1 || er4 == 1 || er5 == 1) {
+    if(er1== 1 || er2==1 || er3== 1 || er4== 1 ){
         return 1;
-    } else {
+    }else{
         return 0;
-    }
+    } 
 
 
 }
 
 function validateForm(e) {
-    if (verif() == 1) {
-        e.preventDefault();
+   if (verif()==1)
+   {
+    e.preventDefault();
     }
-
+    
 };

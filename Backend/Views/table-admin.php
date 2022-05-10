@@ -1,3 +1,4 @@
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -9,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin </title>
+    <title>ADMIN </title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -167,7 +168,7 @@
                                           }
                                           ?>
                                            
-
+                               
                                         </tr>
                                        
                                     </tbody>
@@ -183,6 +184,9 @@
         <div>
             <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
                 <a href="ajoutadmin.php">Ajouter</a>
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
+                <a href="tri.php">Tri</a>
             </button>
           </div>
 

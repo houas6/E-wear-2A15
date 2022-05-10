@@ -1,4 +1,15 @@
-
+<?php
+    include "../Controller/commandeC.php";
+    $commandeC=new CommandeC();
+    $Liste=$commandeC->afficherCommandetri();
+    $bdd=new PDO('mysql:host=localhost;dbname=projet', 'root', '',);
+$Liste = $bdd->query('SELECT * FROM commande ORDER BY nom');
+if (isset ($_GET['s']) AND !empty($_GET['s'])){
+    $recherche =    htmlspecialchars($_GET['s']);
+  $Liste = $bdd->query('SELECT * FROM commande WHERE nom  LIKE "%' .$recherche .'%" '  ); 
+  
+}
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -10,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin </title>
+    <title>ajouter client </title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -152,6 +163,7 @@
                                             <div class="form-group">
                                                 <label >adresse</label>
                                                 <input type="text" name="adresse"  class="form-control" >
+                                                <p id="erroradresse" class="error"></p>
                                             </div>
 
 

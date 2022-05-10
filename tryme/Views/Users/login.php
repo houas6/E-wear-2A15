@@ -34,7 +34,7 @@
         /*foreach($users as $user) {*/
               
             if($user) {
-                    header("Location: update.php");
+                    header("Location:../../index.php");
             }
             else {"<script language='javascript'>";
                 echo "alert('WRONG INFORMATION')";
@@ -93,7 +93,7 @@
                                         <span class="pass"><a href="forgot_password.php">Forgotten password </a></span>
                                     </div>    
                     <div class="form-group form-button">
-                        <input href="../update.php" type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        <input href="../index.html" type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                     </div>
                 </form> 
                 <div>

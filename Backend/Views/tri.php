@@ -1,3 +1,16 @@
+<?php
+    include "../Controller/Admin.php";
+    $AdminController=new AdminController();
+    $Liste=$AdminController->afficheradmintri();
+    $bdd=new PDO('mysql:host=localhost;dbname=projet', 'root', '',);
+$Liste = $bdd->query('SELECT * FROM admine ORDER BY  name');
+if (isset ($_GET['s']) AND !empty($_GET['s'])){
+    $recherche =    htmlspecialchars($_GET['s']);
+  $Liste = $bdd->query('SELECT * FROM admine WHERE name  LIKE "%' .$recherche .'%" '  ); 
+  
+}
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -9,7 +22,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CLIENT </title>
+    <title>Sufee Admin </title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,16 +63,15 @@
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i> Espace Admin </a>
                     </li> 
                    
-                <h3 class="menu-title"> ESPACE CLIENT</h3><!-- /.menu-title -->
+                <h3 class="menu-title"> ESPACE Admin</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="table-client.php">Client</a></li>
+                    
                         <li><i class="fa fa-table"></i><a href="table-admin.php">admin</a></li>
+                        <li><i class="fa fa-table"></i><a href="table-client.php">client</a></li>
                     </ul>
-                </li>
-            
-            </ul>
+                </li></ul>
         </div><!-- /.navbar-collapse -->
     </nav>
 </aside><!-- /#left-panel -->
@@ -69,9 +81,7 @@
 <!-- Right Panel -->
 
 <div id="right-panel" class="right-panel">
-
-   
-    </header>
+ </header>
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -85,7 +95,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">Espace Admin</a></li>
+                            <li><a href="#">Espace reclamation</a></li>
                             <li><a href="#">Table</a></li>
                             <li class="active"> table de donée  </li>
                         </ol>
@@ -100,102 +110,69 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">CLIENT</strong>
-                               
+                                <strong class="card-title">CLIENT</strong>    
                             </div>
-                            <div class="card-body">
-                            <table  class="table table-striped table-bordered">
+                            <div class="card-body"> <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Id Client</th>
+                                        <th>Id Admin</th>
                                             <th>Nom</th>
                                             <th>Mail</th>
                                             <th>MDP</th>
                                             <th>Adresse</th>
+                                            <th>categorie</th>
                                            <!-- <th> savoir plus </th>-->
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <?php
-                                            $con = new PDO ('mysql:host=localhost;dbname=projet',"root","");
-                                            //creation un variable chaine de caractere contenant la requete sql 
-                                            $req ="select * from user";
-                                          //execution de la requete avec la methode query la reponse sera mise dans $rep
-                                            $rep= $con->query($req);
-                                             if(isset($_POST["search"])) {
-                                                $name = $_POST["search-area"];
-                                                $rep = $con->query("select * from user where nom like '%$name%'");   
+                                <?php
+                                foreach($Liste as $AdminController){
+                                ?>
+                                <tr>
+                                
+                                <th scope="row"><b><?php echo $AdminController['ID'] ?></b></th>
+                                    
+                                    <td><b><?php echo $AdminController['name']?></b></td>
+                                    <td><b><?php echo $AdminController['email']?></b></td>
+                                    <td><b><?php echo $AdminController['pass']?></b></td>
+                                    <td><b><?php echo $AdminController['adresse']?></b></td>
+                                    <td><b><?php echo $AdminController['categorie']?></b></td>
+                                    
+                                    
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                        </table>
 
-                                            }
-                                          while($ligne=$rep->fetch()){
-                                          ?>
-                                                  <tr>
-                                                  
-                                          
-                                                      <td><?php echo $ligne["ID"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["name"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["email"];?></td>
+                        <form method="GET">
+                <input type="search" name="s" placeholder="rechercher un nom" >
+                 <input class="btn btn-primary btn-block text-uppercase" type="submit" name="envoyer" >
+                 </form>
+                  <section > 
 
+                    <?PHP if($Liste->rowCount()>0)
+                   { while($AdminController =$Liste ->fetch()) {
+                      ?> 
+                      <?PHP 
+                    }}else { 
+                      ?>
+                       <p>aucune nom trouvé </p> <?PHP } ?> 
+                      </section>
+    
 
-                                                      <td><?php echo $ligne["pass"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["adresse"];?></td>
-                                          
-                                          
-                                                     
-
-                                                      <td> <a href="suppdev.php?rep=<?php echo $ligne['ID'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="modiffdev.php?id=<?=$ligne["ID"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
-
-                                                                                    
-                                                     
-                                          
-                                                     
-                                                  </tr>
-                                          
-                                          
-                                          <?php
-                                          }
-                                          ?>
-                                           
-
-                                        </tr>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-        <div>
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top:3%;margin-left:5%;border-radius: 5%;">
-                <a href="ajoutclient.php">Ajouter</a>
-            </button>
-          </div>
-
+            </div>
+        </div>
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-                                        <!--
+                                                <!--
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">CARTE Fidélité</strong>
                             </div>
-                            <div class="card-body">
-
-                                <table  class="table table-striped table-bordered">
+                            <div class="card-body">                          <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id Client</th>
@@ -217,9 +194,9 @@
                                     </tbody>
                                 </table>
                             </div>
+                                        -->
                         </div>
                     </div>
-                                        -->
 
 
                 </div>

@@ -1,47 +1,3 @@
-
-<?php
-   include_once '../Model/Admin.php';
-    include_once '../Controller/Admin.php';
-    $error = "";
-    $Admin = null;
-
-    // create an instance of the controller
-    $AdminController = new AdminController();
-    if (
-		isset($_POST["name"]) &&		
-        isset($_POST["email"]) &&
-		isset($_POST["pass"]) &&
-        isset($_POST["adresse"]) && 
-        isset($_POST["categorie"])
-    ) {
-        if (
-			!empty($_POST['name']) &&
-            !empty($_POST["email"]) && 
-			!empty($_POST["pass"]) &&
-            !empty($_POST["adresse"]) && 
-            !empty($_POST["categorie"])
-        ) {
-            $Admin = new Admin(
-				$_POST['name'],
-                $_POST['email'],
-                $_POST['pass'],
-                $_POST['adresse'],
-                $_POST['categorie'],
-            );
-            $AdminController->addAdminB($Admin);
-            var_dump($Admin);
-           header('Location:table-admin.php');
-        }
-        else
-            $error = "Missing information";
-            echo $error;
-    }
-    var_dump($_POST);
-    
-?>
-
-
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -70,7 +26,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    
+    <script type="text/javascript" src="csclient.js"></script>
 
 
 </head>
@@ -169,35 +125,36 @@
                                             <h3 class="text-center">Ajouter </h3>
                                         </div>
                                         <hr>
-                                        <form action="" method="POST" id="c">
-                                        <script type="text/javascript" src="cs.js"></script>
+                                        <form action="ajoutadmine_form.php"   onsubmit="return validateForm(event)" name="Form"    method="POST">
+
                                             <div class="form-group">
                                                 <label >ID client</label>
                                                 <input type="number" name="ID" class="form-control" hidden>
                                             </div>
                                             <div class="form-group">
                                                 <label >Nom</label>
-                                                <input type="text" name="name" id="name" class="form-control" >
-                                                <p style="color: red;" id="error_first"></p>
+                                                <input type="text" name="name" class="form-control" >
+                                                <p id="errorNR" class="error"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >email</label>
-                                                <input type="email"  name="email" id="email" class="form-control" >
-                                                <p style="color: red;" id="error_mail"></p>
+                                                <input type="email"  name="email" class="form-control" >
+                                                <p id="errorMR" class="error"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >password</label>
-                                                <input type="password"  name="pass" id="pass" class="form-control" >
-                                                <p style="color: red;" id="error_pass"></p>
+                                                <input type="password"  name="pass" class="form-control" >
+                                                <p id="errorPass" class="error"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >adresse</label>
-                                                <input type="text" name="adresse" id="adresse"  class="form-control" >
-                                                <p style="color: red;" id="error_adress"></p>
+                                                <input type="text" name="adresse"  class="form-control" >
+                                                <p id="erroradresse" class="error"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label >categorie</label>
                                                 <input type="text" name="categorie"  class="form-control" >
+                                                <p id="errorCat" class="error"></p>
                                             </div>
 
 

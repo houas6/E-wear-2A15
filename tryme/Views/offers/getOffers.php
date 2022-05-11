@@ -69,7 +69,7 @@ else {
 
       <div class="w-full text-center pt-10">
 
-<a  href="createOffer.php"  class="text-blue-400" target="_blank">Create Offer</a>
+<a  href="createOffer.php"  class="text-red-400" target="_blank">Create Offer</a>
 </div>
 
 
@@ -136,7 +136,7 @@ while($ligne=$result->fetch()){
     <td>".$ligne["pourcentage"]."</td>
     <td>".$ligne["dateDebut"]."</td>
     <td>".$ligne["dateFin"]."</td>
-    <td  class='text-blue-500'><form method='post' action='updateOffer.php'>
+    <td  class='text-red-500'><form method='post' action='updateOffer.php'>
     <input type='hidden' name='id' value='".$ligne["ID"]."' /> 
     <input type='submit' value='update' /> 
     </form></td>
@@ -160,7 +160,7 @@ while($ligne=$result->fetch()){
 <form  method="post"  class="flex  p-1">
       <input type="hidden" value="sort" name="action" />
       <input type="hidden" value="pourcentage" name="tri" />
-        <button class="py-1 px-3 ml-auto bg-green-500  text-white rounded-md  ">
+        <button class="py-1 px-3 ml-auto bg-red-500  text-white rounded-md  ">
           trier
         </button>
       </form>

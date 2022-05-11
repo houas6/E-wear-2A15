@@ -1,5 +1,4 @@
 <?php
-
 include_once '../../config.php';
 include_once '../../Model/game.php';
 include_once '../../Controller/game.php';
@@ -20,7 +19,7 @@ if (
       $game->setemail($_POST['email']);
       
       
-      $controller = new gameController();
+      $controller = new GameController();
       
       $controller->addgame($game);
       
@@ -35,24 +34,27 @@ if (!isset($_POST['id'])) {
 
 
 $id  = $_POST['id'];
-$controller = new gameController();
+$controller = new GameController();
 $game =  $controller->getgame($id);
+
 
 
 if (
     !isset($_POST['id'])
-    ||!isset($_POST['description'])
-    || !isset($_POST['codet'])
+    ||!isset($_POST['Description'])
+    || !isset($_POST['code'])
     || !isset($_POST['email'])
     ) {
+
     }  else {
+
 
       
       $game = new Game();
       $game->setId($_POST['id']);
-      $game->setDescription($_POST['description']);
+      $game->setDescription($_POST['Description']);
       $game->setcode($_POST['code']);
-      $offer->setemail($_POST['email']);
+      $game->setemail($_POST['email']);
       
       
       $controller = new GameController();
@@ -102,18 +104,19 @@ if (
               type="number"
               id="id"
               name="id"
-              value="<?=$game['description']?>"
+              value="<?=$game['ID']?>"
               class="resize-none rounded border border-gray-800 p-1 "
               >
             </div>
             
             <div class="grid gap-1">
-                <label for="description" class="text-gray-800"> description </label>
+                <label for="Description" class="text-gray-800"> Description </label>
                 <input
-                value="<?=$game['description']?>"
+                value="<?=$game['Description']?>"
+                id="Description "
                 type="text"
-                name="desc"
-              id="desc"
+                name="Description"
+              
               class="rounded border border-gray-800 p-1"
             />
         </div>
@@ -121,9 +124,9 @@ if (
         <div class="grid gap-1">
             <label for="code" class="text-gray-800"> code </label>
             <input
-            type="number"
-            value="<?= $game['code'] ?>"
+            value="<?=$game['code'] ?>"
             id="code"
+            type="number"
             name="code"
             class="rounded border border-gray-800 p-1"
             />

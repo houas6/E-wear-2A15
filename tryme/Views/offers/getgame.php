@@ -103,7 +103,7 @@ if (
         
       <div class="w-full text-center pt-10">
 
-<a  href="creategame.php"  class="text-blue-400" target="_blank">Create Game</a>
+<a  href="creategame.php"  class="text-red-400" target="_blank">Create Game</a>
 </div>
 
   
@@ -163,7 +163,7 @@ foreach ($data as &$ligne){
     <td>".$ligne["code"]."</td>
     <td>".$ligne["email"]."</td>
 
-    <td  class='text-blue-500'><form method='post' action='updategame.php'>
+    <td  class='text-red-500'><form method='post' action='updategame.php'>
     <input type='hidden' name='id' value='".$ligne["ID"]."' /> 
     <input type='submit' value='update' /> 
     </form></td>
@@ -186,7 +186,7 @@ foreach ($data as &$ligne){
 <div>
 <form  method="post"  class="flex  p-1">
       <input type="hidden" value="pick" name="action" />
-        <button class="py-1 px-3 ml-auto bg-green-500  text-white rounded-md  ">
+        <button class="py-1 px-3 ml-auto bg-red-500  text-white rounded-md  ">
           winner
         </button>
       </form>

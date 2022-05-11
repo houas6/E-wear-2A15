@@ -47,7 +47,6 @@ if (error) {
   e.preventDefault();
 } 
 
-e.preventDefault();
 
 
 }

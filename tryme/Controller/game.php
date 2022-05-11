@@ -52,7 +52,7 @@ class GameController {
     
     
 
-    function deleteOffers($id) {
+    function deletegame($id) {
         $sql = "DELETE FROM game WHERE ID = ".$id;
 
 
@@ -67,8 +67,8 @@ class GameController {
     }
 
 
-    function updateOffer($game) {
-        $sql = "UPDATE game SET ID = '".$game->getid()."', Description = '".$game->descrption()."', code = '".$game->getcode()."', email = '".$game->getemail()."' WHERE ID = ".$game->getId();
+    function updategame($game) {
+        $sql = "UPDATE game SET ID = '".$game->getid()."', Description = '".$game->getDescription()."', code = '".$game->getcode()."', email = '".$game->getemail()."' WHERE ID = ".$game->getid();
 
         $db = config::getConnexion();
         try{

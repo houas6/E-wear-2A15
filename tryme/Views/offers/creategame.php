@@ -55,7 +55,7 @@ if (!isset($_POST['description'])
 
         <div class="w-full text-center pt-10">
 
-          <a  href="getgame.php"  class="text-blue-400" target="_blank">Games list</a>
+          <a  href="getgame.php"  class="text-red-400" target="_blank">Games list</a>
         </div>
 
         <div class="grid max-w-lg mx-auto gap-4 text-black py-4">

@@ -1,8 +1,8 @@
 <?php 
-include '../Controller/livraisonC.php';
-require_once '../Model/livraison.php';
+include '../Controller/livreurC.php';
+require_once '../Model/livreur.php';
 // create an instance of the controller
-$livraisonC = new livraisonC();
+$livreurC = new livreurC();
 if (isset($_POST['Export'])) {
     $demandeC->excel();
   }
@@ -14,7 +14,6 @@ if (isset($_POST['Export'])) {
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
-<script type="text/javascript" src="livraison.js"></script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +50,7 @@ if (isset($_POST['Export'])) {
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -64,7 +63,7 @@ if (isset($_POST['Export'])) {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
-                            <li><i class="fa fa-table"></i><a href="afficherlivraison.php">livraison</a></li>
+                            <li><i class="fa fa-table"></i><a href="afficherlivraison.php">Livraison</a></li>
                             <li><i class="fa fa-table"></i><a href="afficherlivreur.php">Livreur</a></li>
                             <li><i class="fa fa-table"></i><a href="table-panier.html">Panier</a></li>
                             <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
@@ -151,7 +150,7 @@ if (isset($_POST['Export'])) {
                     <div class="col-lg-6" >
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">livraison</strong>
+                                <strong class="card-title">livreur</strong>
                             </div>
                             <div class="card-body" >
                                 <!-- Credit Card -->
@@ -161,13 +160,7 @@ if (isset($_POST['Export'])) {
                                             <h3 class="text-center">Ajouter </h3>
                                         </div>
                                         <hr>
-                                        <form action="ajoutliv.php" method="POST">
-
-                                            <div class="form-group">
-                                                <label >Adresse </label>
-                                                <input type="text" name="adresse" text-align="center"required class="form-control" >
-                                                <p id="errorcm" class="error" text-align="center" ></p>
-                                            </div>
+                                        <form action="ajoutlivr.php" method="POST">
                                             <div class="form-group">
                                                 <label >Nom </label>
                                                 <input type="text" name="nom"required class="form-control" >
@@ -183,22 +176,7 @@ if (isset($_POST['Export'])) {
                                                 <input type= "tel" name="tel" pattern="[0-9]{8}" required class="form-control" >
                                                 <p id="errortl" class="error"></p>
                                             </div>
-                                            <div class="form-group">
-                                                <label >E-mail</label>
-                                                <input type="email" name="mail" required class="form-control" >
-                                                <p id="errorMR" class="error"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label >Frais</label>
-                                                <input type="number" name="frais" pattern="[0-9]{1}" required  class="form-control" >
-                                                <p id="errorPR" class="error"></p>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label >ID Livreur</label>
-                                                <input type="number" name="id_livreur"  required  class="form-control" >
-                                                <p id="errorPR" class="error"></p>
-                                            </div>
+                                            
 
                                                 <div>
                                                     <button type="submit" class="btn btn-lg btn-info btn-block">
@@ -207,7 +185,7 @@ if (isset($_POST['Export'])) {
 
                                                     </button>
                                                     <td>
-                            <a href="afficherlivraison.php" >
+                            <a href="afficherlivreur.php" >
                             <button type="button" class="btn btn-dark btn-icon-text">
                                 Afficher
                                   <i class="ti-file btn-icon-append"></i>                          
@@ -216,6 +194,7 @@ if (isset($_POST['Export'])) {
                         
 
                           </td>
+
                         </a>
                                                 </div>
                                         </form>

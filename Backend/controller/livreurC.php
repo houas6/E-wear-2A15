@@ -1,14 +1,16 @@
 <?php
 
     include_once '../config.php';
-    require_once '../model/livraison.php';
+    require_once '../model/livreur.php';
+    require('fpdf/fpdf.php');
+    
 
 
-    Class livraisonC {
+    Class livreurC {
 
-        function afficherlivraison()
+        function afficherlivreur()
         {
-            $requete = "select * from livraison";
+            $requete = "select * from livreur";
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare($requete);
@@ -23,9 +25,9 @@
 
 
 
-        function getlivraisonbyID($id)
+        function getlivreurbyID($id)
         {
-            $requete = "select * from livraison where id=:id";
+            $requete = "select * from livreur where id=:id";
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare($requete);
@@ -41,49 +43,43 @@
             }
         }
 
-        function ajouterlivraison($livraison)
+        function ajouterlivreur($livreur)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
-                INSERT INTO livraison
-                (id,nom,prenom,adresse,mail,frais,tel,id_livreur)
+                INSERT INTO livreur
+                (id,nom,prenom,tel)
                 VALUES
-                (DEFAULT, :nom, :prenom, :adresse, :mail, :frais, :tel, :id_livreur)
+                (DEFAULT, :nom, :prenom, :tel)
                 ');
                 $querry->execute([
-                    'nom'=>$livraison->getNom(),
-                    'prenom'=>$livraison->getPrenom(),
-                    'adresse'=>$livraison->getAdresse(),
-                    'mail'=>$livraison->getMail(),
-                    'frais'=>$livraison->getFrais(),
-                    'tel'=>$livraison->getTel(),
-                    'id_livreur'=>$livraison->getid_livreur(),
+                    'nom'=>$livreur->getNom(),
+                    'prenom'=>$livreur->getPrenom(),
+                    'tel'=>$livreur->getTel()
+                    
+
 
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();
             }
         }
-        function modifierlivraison($livraison)
+        function modifierlivreur($livreur)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
-                UPDATE livraison SET
-                nom=:nom,prenom=:prenom,adresse=:adresse,mail=:mail,frais=:frais,tel=:tel,id_livreur=:id_livreur,
+                UPDATE livreur SET
+                nom=:nom,prenom=:prenom,tel=:tel
                 where id=:id
                 ');
                 $querry->execute([
-                    'id'=>$livraison->getid(),
-                    'nom'=>$livraison->getNom(),
-                    'prenom'=>$livraison->getPrenom(),
-                    'adresse'=>$livraison->getAdresse(),
-                    'mail'=>$livraison->getMail(),
-                    'frais'=>$livraison->getFrais(),
-                    'tel'=>$livraison->getTel(),
-                    'id_livreur'=>$livraison->getid_livreur(),
-
+                    'id'=>$livreur->getid(),
+                    'nom'=>$livreur->getNom(),
+                    'prenom'=>$livreur->getPrenom(),
+                    'tel'=>$livreur->getTel()
+                    
 
                   
                 ]);
@@ -94,9 +90,9 @@
 
 
 
-        function supprimerlivraison($id)
+        function supprimerlivreur($id)
         {
-            $sql="DELETE FROM livraison WHERE id= :id_user";
+            $sql="DELETE FROM livreur WHERE id= :id_user";
 			$db = config::getConnexion();
 			$req=$db->prepare($sql);
 			$req->bindValue(':id_user',$id);
@@ -107,4 +103,5 @@
 				die('Erreur: '.$e->getMessage());
 			}
         }
+        
     }

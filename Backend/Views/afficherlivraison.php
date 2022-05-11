@@ -51,15 +51,14 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
-                        <li><i class="fa fa-table"></i><a href="table-client.html">Client</a></li>
-                        <!-- <li><i class="fa fa-table"></i><a href="table-user.php">User</a></li>
-                       <li><i class="fa fa-table"></i><a href="table-panier.php">Panier</a></li>
-                        <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
-                       
-                        <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
-                        <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>-->
-                    </ul>
+                            <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
+                            <li><i class="fa fa-table"></i><a href="afficherlivraison.php">livraison</a></li>
+                            <li><i class="fa fa-table"></i><a href="afficherlivreur.php">Livreur</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-panier.html">Panier</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>
+                        </ul>
                 </li>
             
 
@@ -247,6 +246,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">livraison</strong>
+                                <td> <a href="ajoutlivraison.php?>"><button type="button" class="btn btn-outline-info">Ajouter</button></a></td>
                             </div>
                             <div class="card-body">
                             <form method= "post"  enctype = "multipart/form-data" class="form-inline my-2 my-lg-0">
@@ -359,27 +359,25 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">CARTE Fidélité</strong>
+                                <strong class="card-title">Totale des frais</strong>
                             </div>
                             <div class="card-body">
                           
 
                                 <table  class="table table-striped table-bordered">
                                     <thead>
-                                        <tr>
-                                            <th>Id Client</th>
-                                            <th>Num_carte</th>
-                                            <th>Point_Fidélité</th>
-                                            <th>Date_Expiration</th>
-                                           
-                                        </tr>
-                                    </thead>
+                                        
                                     <tbody>
                                         <tr>
-                                            <td>1236589</td>
-                                            <td>895623</td>
-                                            <td>123.000</td>
-                                            <td>20/9/2023</td>
+                                            <td><?php $sql="SELECT SUM(frais) as total from livraison"  ; 
+                                            $db = new PDO ('mysql:host=localhost;dbname=livraison',"root","");
+                                           $req=$db->prepare($sql);
+                                           $req->execute();
+                                           $total=$req->fetch(PDO::FETCH_ASSOC);
+                                           $totales=$total['total'];
+                                           echo $totales;
+                                           ?> </td>
+                                           
                                             
                                         </tr>
                                        

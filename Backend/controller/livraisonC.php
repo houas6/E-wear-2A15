@@ -60,7 +60,7 @@
                     'mail'=>$livraison->getMail(),
                     'frais'=>$livraison->getFrais(),
                     'tel'=>$livraison->getTel(),
-                    'id_livreur'=>$livraison->getid_livreur(),
+                    'id_livreur'=>$livraison->getid_livreur()
 
 
                 ]);

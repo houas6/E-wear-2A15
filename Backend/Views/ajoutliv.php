@@ -21,12 +21,12 @@ $livraisonC = new livraisonC();
 
 	$livraisonC->ajouterlivraison($livraison);
 	//mailing
-$to_email = $_POST['adresse'];
+$to_email = $_POST['mail'];
 $subject = "Confirmation de livraison";
-$body = "Une livraison a été ajouter sous votre nom".$_POST['nom']." ".$prenom = $_POST['prenom'];
-$headers = 'From: '."smtp.gmail.com". "\r\n";
+$body = "Une livraison a été ajoutée sous votre nom: ".$nom." ".$prenom." qui sera délivrée à votre addresse ".$adresse;
+$headers = "";
  
-if (mail("hedikramti85@gmail.", $subject, $body, $headers)) {
+if (mail($to_email, $subject, $body, $headers)) {
     echo "Email successfully sent to $to_email...";
 } else {
     echo "Email sending failed...";

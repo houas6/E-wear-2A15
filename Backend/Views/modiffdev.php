@@ -89,9 +89,9 @@ $listeliv = $livraisonC->afficherlivraison();
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <!-- <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li> -->
-                            <li><i class="fa fa-table"></i><a href="table-client.html">Client</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-user.php">User</a></li>
-                            <li><i class="fa fa-table"></i><a href="table-panier.php">Panier</a></li>
+                            <li><i class="fa fa-table"></i><a href="afficherlivraison.php">livraison</a></li>
+                            <li><i class="fa fa-table"></i><a href="afficherlivreur.php">Livreur</a></li>
+                            <li><i class="fa fa-table"></i><a href="table-panier.html">Panier</a></li>
                             <li><i class="fa fa-table"></i><a href="table-produit.html">Produit</a></li>
                             <li><i class="fa fa-table"></i><a href="table-marketing.html">Marketing</a></li>
                             <li><i class="fa fa-table"></i><a href="table-service.html">Service après-vente</a></li>

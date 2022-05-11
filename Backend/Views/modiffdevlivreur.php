@@ -1,12 +1,37 @@
-<?php 
-include '../Controller/livraisonC.php';
-require_once '../Model/livraison.php';
-// create an instance of the controller
-$livraisonC = new livraisonC();
-if (isset($_POST['Export'])) {
-    $demandeC->excel();
-  }
+<?php
+include '../controller/livreurC.php';
+require_once '../model/livreur.php';
+$livreurC = new livreurC();
+if (isset($_GET['id'])) {
+  $livToEdit = $livreurC->getlivreurbyID($_GET['id']);
+}
+$listeliv = $livreurC->afficherlivreur();
+
+  
+ 
+     
+          
+          
+          
+           if (isset($_REQUEST['edit'])) {
+            $livreurC = new livreurC();
+          $livreur = new livreur($_POST['id'],$_POST['nom'], $_POST['prenom'],$_POST['tel']);
+          $livreurC->modifierlivreur($livreur);
+          
+          header('Location:afficherlivreur.php');
+          }
+         // header('Location:blank.php');
+       else {
+          echo 'error';
+          //header('Location:blank.php');
+      }
+  
+
+
 ?>
+
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -14,7 +39,6 @@ if (isset($_POST['Export'])) {
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
-<script type="text/javascript" src="livraison.js"></script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +75,7 @@ if (isset($_POST['Export'])) {
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -151,72 +175,44 @@ if (isset($_POST['Export'])) {
                     <div class="col-lg-6" >
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">livraison</strong>
+                                <strong class="card-title">Livreur</strong>
                             </div>
                             <div class="card-body" >
                                 <!-- Credit Card -->
                                 <div id="pay-invoice">
                                     <div class="card-body">
                                         <div class="card-title">
-                                            <h3 class="text-center">Ajouter </h3>
+                                            <h3 class="text-center">Modifier Livreur </h3>
                                         </div>
                                         <hr>
-                                        <form action="ajoutliv.php" method="POST">
-
+                                        <form action="" method="POST">
+                                        <?php if (isset($livToEdit)) {?>
+                                            <input type="hidden" name="id" value=" <?php echo $livToEdit['id'] ?>">
+                                            <?php  }
+                    ?>
                                             <div class="form-group">
-                                                <label >Adresse </label>
-                                                <input type="text" name="adresse" text-align="center"required class="form-control" >
-                                                <p id="errorcm" class="error" text-align="center" ></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label >Nom </label>
-                                                <input type="text" name="nom"required class="form-control" >
+                                                <label> nom </label>
+                                                <input type="text" name="nom"required name="<?php if (isset($livToEdit)) echo $livToEdit['nom']  ?>" class="form-control" >
                                                 <p id="errorNR" class="error"></p>
                                             </div>
                                             <div class="form-group">
-                                                <label >Prenom </label>
-                                                <input type="text" name="prenom" required class="form-control" >
+                                                <label >prenom</label>
+                                                <input type="text" name="prenom" required name="<?php if (isset($livToEdit)) echo $livToEdit['prenom']  ?>" class="form-control" >
                                                 <p id="errorPR" class="error"></p>
-                                            </div>
-                                            <div class="form-group">
+                                                </div>
+                                                <div class="form-group">
                                                 <label >Num Tel</label>
-                                                <input type= "tel" name="tel" pattern="[0-9]{8}" required class="form-control" >
+                                                <input type= "number" name="tel" pattern="[0-9]{8}" required name="<?php if (isset($livToEdit)) echo $livToEdit['tel']  ?>" class="form-control" >
                                                 <p id="errortl" class="error"></p>
                                             </div>
-                                            <div class="form-group">
-                                                <label >E-mail</label>
-                                                <input type="email" name="mail" required class="form-control" >
-                                                <p id="errorMR" class="error"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label >Frais</label>
-                                                <input type="number" name="frais" pattern="[0-9]{1}" required  class="form-control" >
-                                                <p id="errorPR" class="error"></p>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label >ID Livreur</label>
-                                                <input type="number" name="id_livreur"  required  class="form-control" >
-                                                <p id="errorPR" class="error"></p>
-                                            </div>
 
                                                 <div>
-                                                    <button type="submit" class="btn btn-lg btn-info btn-block">
-                                                        <span >Ajouter </span>
-                                            
+                                                    <button type="submit"  name="edit" class="btn btn-lg btn-info btn-block">
+
+                                                        <span >modifier </span>
 
                                                     </button>
-                                                    <td>
-                            <a href="afficherlivraison.php" >
-                            <button type="button" class="btn btn-dark btn-icon-text">
-                                Afficher
-                                  <i class="ti-file btn-icon-append"></i>                          
-                            </button>
-                            </a>
-                        
-
-                          </td>
-                        </a>
                                                 </div>
                                         </form>
                                     </div>
@@ -241,3 +237,4 @@ if (isset($_POST['Export'])) {
                             <script src="assets/js/main.js"></script>
 </body>
 </html>
+                                        

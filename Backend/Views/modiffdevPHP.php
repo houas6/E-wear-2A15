@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
           
           
            if (isset($_REQUEST['edit'])) {
-          $livraison = new livraison($_POST['adresse'], $_POST['nom'], $_POST['prenom'], $_POST['tel'],$_POST['mail'],$_POST['frais']);
+          $livraison = new livraison($_POST['adresse'], $_POST['nom'], $_POST['prenom'], $_POST['tel'],$_POST['mail'],$_POST['frais'],$_POST['id_livreur']);
           $livraisonC->modifierlivraison($livraison);
           
           header('Location:afficherlivraison.php');

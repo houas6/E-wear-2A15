@@ -47,7 +47,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                
-                <h3 class="menu-title"> ESPACE livraison</h3><!-- /.menu-title -->
+                <h3 class="menu-title"> ESPACE livreur</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -245,28 +245,24 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">livraison</strong>
+                                <strong class="card-title">livreur</strong>
                                 <td> <a href="ajoutlivraison.php?>"><button type="button" class="btn btn-outline-info">Ajouter</button></a></td>
                             </div>
                             <div class="card-body">
                                   
                                   <div style="margin-left: 75%;">
-                                  <form method="post" action="recherche.php">
+                                  <form method="post" action="recherchelivreur.php">
           <input type="text" name="qq" placeholder="Search" required="">
           </form>
                                 </div> 
                                 <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID Livraison</th>
+                                            <th>ID Livreur</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
-                                            <th>Adresse</th>
-                                            <th>Mail</th>
-                                            <th>Frais</th>
                                             <th>Numero Telephone</th>
-                                            <th>ID Livreur</th>
-                                            
+
                                            <!-- <th> savoir plus </th>-->
 
                                         </tr>
@@ -277,7 +273,7 @@
                                             $con = new PDO ('mysql:host=localhost;dbname=livraison',"root","");
                                             //creation un variable chaine de caractere contenant la requete sql 
                                             $qq=$_POST['qq'];
-                                            $req ="select * from livraison where nom like '%$qq%'"." or prenom like '%$qq%'";
+                                            $req ="select * from livreur where nom like '%$qq%'"." or prenom like '%$qq%'";
                                           //execution de la requete avec la methode query la reponse sera mise dans $rep
                                             $rep= $con->query($req);
                                              
@@ -295,24 +291,10 @@
                                                       <td><?php echo $ligne["prenom"];?></td>
 
 
-                                                      <td><?php echo $ligne["adresse"];?></td>
-                                                  
-                                                  
-                                                      <td><?php echo $ligne["mail"];?></td>
-                                          
-                                                    
-                                                      <td><?php echo $ligne["frais"];?></td>
-
-
                                                       <td><?php echo $ligne["tel"];?></td>
-
-
-                                                      <td><?php echo $ligne["id_livreur"];?></td>
-
-
-                                                     
-                                                      <td> <a href="suppdev.php?id=<?= $ligne['id'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                                                      <td> <a href="modiffdev.php?id=<?=$ligne["id"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
+  
+                                                      <td> <a href="suppdevlivreur.php?id=<?= $ligne['id'];?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+                                                      <td> <a href="modiffdevlivreur.php?id=<?=$ligne["id"]?>"><button type="button" class="btn btn-outline-info">modifier</button></a></td>
 
                                                                                     
                                                      
